@@ -8,10 +8,12 @@ package com.jobits.ui.components;
 import com.jobits.ui.components.swing.input.MaterialPasswordField;
 import com.jobits.ui.components.swing.input.MaterialTextField;
 import com.jobits.ui.components.swing.buttons.MaterialButton;
+import com.jobits.ui.components.swing.buttons.MaterialIconButton;
 import com.jobits.ui.components.swing.containers.MaterialPanel;
 import com.jobits.ui.components.swing.containers.MaterialFrame;
 import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.MaterialComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -65,6 +67,10 @@ public class MaterialComponentsFactory {
 
         public static JButton getCancelButton() {
             return new MaterialButton(MaterialColors.COSMO_RED);
+        }
+
+        public static JButton getIconButton(ImageIcon imageIcon) {
+            return new MaterialIconButton(imageIcon);
         }
 
     }
