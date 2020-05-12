@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'maven'
+
+
+group = 'com.jobits.ui'
+
+repositories {
+    jcenter()
+    mavenCentral()
+} 
+    
+dependencies {
+    testCompile 'junit:junit:4.12'
+   
+    implementation project(':core')
+}
+
