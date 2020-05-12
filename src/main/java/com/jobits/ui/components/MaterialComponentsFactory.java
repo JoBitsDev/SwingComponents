@@ -33,7 +33,7 @@ import util.materials.MaterialIcons;
  * @author Jorge
  *
  */
-public class MaterialComponentsFactory {
+public class MaterialComponentsFactory {//TODO material outlined buttons instead of different colors
 
     public static class Buttons {
 
@@ -67,6 +67,10 @@ public class MaterialComponentsFactory {
 
         public static JButton getCancelButton() {
             return new MaterialButton(MaterialColors.COSMO_RED);
+        }
+        
+        public static JButton getOutlinedButton(){
+            return new MaterialButton();
         }
 
         public static JButton getIconButton(ImageIcon imageIcon) {
