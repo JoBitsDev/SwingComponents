@@ -5,6 +5,7 @@
  */
 package com.jobits.ui.components;
 
+import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.components.swing.input.MaterialPasswordField;
 import com.jobits.ui.components.swing.input.MaterialTextField;
 import com.jobits.ui.components.swing.buttons.MaterialButton;
@@ -80,6 +81,10 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return new MaterialIconButton(imageIcon);
         }
 
+        public static JButton getMenuButton() {
+            return new MaterialSecondaryButton(MaterialIcons.MENU.deriveIconTTF(30f));
+        }
+
     }
 
     public static class Displayers {
@@ -141,6 +146,10 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 
         public static JPanel getSecondaryPanel() {
             return new MaterialPanel(MaterialColors.BLUEA_100);
+        }
+
+        public static JPanel getHeaderPanel() {
+            return new MaterialPanel(DefaultValues.SECONDARY_PANEL_COLOR);
         }
 
     }
