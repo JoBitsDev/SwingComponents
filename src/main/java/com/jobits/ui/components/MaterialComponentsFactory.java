@@ -9,10 +9,13 @@ import com.jobits.ui.components.swing.input.MaterialPasswordField;
 import com.jobits.ui.components.swing.input.MaterialTextField;
 import com.jobits.ui.components.swing.buttons.MaterialButton;
 import com.jobits.ui.components.swing.buttons.MaterialIconButton;
+import com.jobits.ui.components.swing.buttons.MaterialSecondaryButton;
 import com.jobits.ui.components.swing.containers.MaterialPanel;
 import com.jobits.ui.components.swing.containers.MaterialFrame;
 import com.jobits.ui.components.swing.containers.MaterialWindow;
+import com.jobits.ui.components.swing.displayers.LoadingPanel;
 import com.jobits.ui.components.swing.displayers.MaterialComboBox;
+import components.labels._MaterialLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -54,23 +57,23 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JButton getBackButton() {
-            return new MaterialButton(MaterialIcons.NAVIGATE_BEFORE, MaterialColors.GREY_400);
+            return new MaterialSecondaryButton(MaterialIcons.ARROW_BACK);
         }
 
         public static JButton getEditButton() {
-            return new MaterialButton(MaterialIcons.UPDATE, MaterialColors.LIGHTBLUEA_200);
+            return new MaterialSecondaryButton(MaterialIcons.UPDATE);
         }
 
         public static JButton getAcceptButton() {
-            return new MaterialButton(MaterialColors.LIGHTBLUE_200);
+            return new MaterialButton();
         }
 
         public static JButton getCancelButton() {
-            return new MaterialButton(MaterialColors.COSMO_RED);
+            return new MaterialSecondaryButton();
         }
-        
-        public static JButton getOutlinedButton(){
-            return new MaterialButton();
+
+        public static JButton getOutlinedButton() {
+            return new MaterialSecondaryButton();
         }
 
         public static JButton getIconButton(ImageIcon imageIcon) {
@@ -89,8 +92,12 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return new JLabel();
         }
 
-        public static JComponent getProgressDialog() {
-            return new JLabel();
+        public static JComponent getLoadingPanel(String loadingMessage) {
+            return new LoadingPanel(loadingMessage);
+        }
+
+        public static JLabel getH3Label() {
+            return new _MaterialLabel();
         }
     }
 
