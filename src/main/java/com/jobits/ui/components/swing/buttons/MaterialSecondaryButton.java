@@ -25,7 +25,7 @@ public class MaterialSecondaryButton extends _MaterialButton {
 
     public MaterialSecondaryButton() {
         setBackground(MaterialColors.TRANSPARENT);
-        setForeground(DefaultValues.BUTTON_COLOR);
+        setForeground(DefaultValues.PRIMARY_COLOR);
         setBorder(new LineBorder(getForeground(), DefaultValues.BORDER_LINE_THICK));
 
     }

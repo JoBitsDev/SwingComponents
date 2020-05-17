@@ -1,6 +1,8 @@
 package com.jobits.pos.ui;
 
 import com.jgoodies.binding.adapter.Bindings;
+import com.jgoodies.binding.list.SelectionInList;
+import com.jidesoft.swing.CheckBoxListSelectionModel;
 import java.util.List;
 import com.jobits.pos.ui.presenters.AbstractListViewPresenter;
 import com.jobits.pos.ui.utils.BindableTableModel;
@@ -9,11 +11,16 @@ import com.jobits.ui.components.MaterialComponentsFactory;
 import util.materials.MaterialIcons;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+import org.jdesktop.swingx.JXPanel;
+import static com.jobits.pos.ui.viewmodel.AbstractListViewModel.*;
+import org.jdesktop.swingx.JXTable;
 
 /**
  *
  * @author Jorge
- * @param <T>
+ * @param <T> tipo de dato del modelo
  */
 public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
 
@@ -28,57 +35,40 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
     private void initComponents() {
 
         jPopupMenuClickDerecho = new javax.swing.JPopupMenu();
-        jButtonEdit = new javax.swing.JButton();
-        jButtonDelete = new javax.swing.JButton();
         jPanelControlesSuperiores = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanelTabla = new javax.swing.JPanel();
+        jLabel1 = MaterialComponentsFactory.Displayers.getH3Label();
+        jPanelTabla = MaterialComponentsFactory.Containers.getPrimaryPanel();
         jPanelHeader = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextFieldBusqueda = MaterialComponentsFactory.Input.getTextField("Buscar...", "");
         jLabel2 = new javax.swing.JLabel();
+        jXPanelControles = new org.jdesktop.swingx.JXPanel();
+        jButtonDelete = MaterialComponentsFactory.Buttons.getOutlinedButton();
+        jButtonEdit = MaterialComponentsFactory.Buttons.getOutlinedButton();
+        jButtonAdd = MaterialComponentsFactory.Buttons.getMaterialButton();
         jPanelExtra = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableList = new javax.swing.JTable();
         jLabelCantidad = new javax.swing.JLabel();
-        jXPanelControles = new org.jdesktop.swingx.JXPanel();
-        jButtonAdd = MaterialComponentsFactory.Buttons.getMaterialButton();
 
         jPopupMenuClickDerecho.setInvoker(jTableList);
 
-        jButtonEdit.setMnemonic('e');
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/jobits/pos/ui/Bundle"); // NOI18N
-        jButtonEdit.setText(bundle.getString("label_editar")); // NOI18N
-        jButtonEdit.setPreferredSize(new java.awt.Dimension(80, 40));
-        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditActionPerformed(evt);
-            }
-        });
-
-        jButtonDelete.setMnemonic('d');
-        jButtonDelete.setText(bundle.getString("label_eliminar")); // NOI18N
-        jButtonDelete.setPreferredSize(new java.awt.Dimension(95, 40));
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
-
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 5, 15));
         setMinimumSize(getMinimumSize());
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
 
         jPanelControlesSuperiores.setOpaque(false);
-        jPanelControlesSuperiores.setLayout(new javax.swing.BoxLayout(jPanelControlesSuperiores, javax.swing.BoxLayout.LINE_AXIS));
+        jPanelControlesSuperiores.setLayout(new java.awt.BorderLayout());
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Nombre Tabla");
-        jPanelControlesSuperiores.add(jLabel1);
-        jPanelControlesSuperiores.add(filler1);
+        jPanelControlesSuperiores.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         add(jPanelControlesSuperiores, java.awt.BorderLayout.NORTH);
 
+        jPanelTabla.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         jPanelTabla.setOpaque(false);
         jPanelTabla.setLayout(new java.awt.BorderLayout());
 
@@ -104,8 +94,45 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jLabel2.setMaximumSize(new java.awt.Dimension(40, 40));
         jLabel2.setMinimumSize(new java.awt.Dimension(40, 40));
         jLabel2.setPreferredSize(new java.awt.Dimension(40, 40));
-        jLabel2.setSize(new java.awt.Dimension(45, 40));
         jPanel1.add(jLabel2, java.awt.BorderLayout.LINE_END);
+
+        jXPanelControles.setBackground(new java.awt.Color(204, 204, 204));
+        jXPanelControles.setOpaque(false);
+        jXPanelControles.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        jButtonDelete.setMnemonic('d');
+        jButtonDelete.setText("Eliminar");
+        jButtonDelete.setPreferredSize(new java.awt.Dimension(125, 50));
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+        jXPanelControles.add(jButtonDelete);
+
+        jButtonEdit.setMnemonic('e');
+        jButtonEdit.setText("Editar");
+        jButtonEdit.setPreferredSize(new java.awt.Dimension(125, 50));
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
+        jXPanelControles.add(jButtonEdit);
+
+        jButtonAdd.setMnemonic('a');
+        jButtonAdd.setText("Agregar");
+        jButtonAdd.setMaximumSize(new java.awt.Dimension(125, 50));
+        jButtonAdd.setMinimumSize(new java.awt.Dimension(125, 50));
+        jButtonAdd.setPreferredSize(new java.awt.Dimension(125, 50));
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
+        jXPanelControles.add(jButtonAdd);
+
+        jPanel1.add(jXPanelControles, java.awt.BorderLayout.PAGE_END);
 
         jPanelHeader.add(jPanel1, java.awt.BorderLayout.NORTH);
 
@@ -155,28 +182,10 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jPanelTabla.add(jLabelCantidad, java.awt.BorderLayout.PAGE_END);
 
         add(jPanelTabla, java.awt.BorderLayout.CENTER);
-
-        jXPanelControles.setBackground(new java.awt.Color(204, 204, 204));
-        jXPanelControles.setOpaque(false);
-        jXPanelControles.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        jButtonAdd.setMnemonic('a');
-        jButtonAdd.setText(bundle.getString("label_agregar")); // NOI18N
-        jButtonAdd.setMaximumSize(new java.awt.Dimension(125, 50));
-        jButtonAdd.setMinimumSize(new java.awt.Dimension(125, 50));
-        jButtonAdd.setPreferredSize(new java.awt.Dimension(125, 50));
-        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddActionPerformed(evt);
-            }
-        });
-        jXPanelControles.add(jButtonAdd);
-
-        add(jXPanelControles, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
-     
+
     }//GEN-LAST:event_jTableListMouseClicked
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -207,7 +216,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
     }//GEN-LAST:event_jTableListMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.Box.Filler filler1;
     protected javax.swing.JButton jButtonAdd;
     protected javax.swing.JButton jButtonDelete;
     protected javax.swing.JButton jButtonEdit;
@@ -226,45 +234,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
     protected org.jdesktop.swingx.JXPanel jXPanelControles;
     // End of variables declaration//GEN-END:variables
 
-    /*
-    public void updateView() {
-        model = generateTableModel(getController().getItems());
-        jLabelCantidad.setText(getController().getItems().size() + " Elementos");
-        model.addTableModelListener((TableModelEvent e) -> {
-            jLabelCantidad.setText(getController().getItems().size() + " Elementos");
-        });
-        jTableList.setModel(model);
-        jTableList.setRowSorter(model.getSorter());
-        if (!jTextFieldBusqueda.getText().isEmpty()) {
-            model.filterByString(jTextFieldBusqueda.getText());
-        }
-
-    }
-
-    private void delete() {
-        if (jTableList.getSelectedRows().length > 0) {
-            int[] selecteds = jTableList.getSelectedRows();
-            int r = JOptionPane.showConfirmDialog(this, "Desea borrar " + selecteds.length + " elementos de la lista."
-                    + "\n Esta accion no se puede deshacer");
-            if (r == JOptionPane.YES_OPTION) {
-                ArrayList<T> sel = new ArrayList<>();
-                for (int s : selecteds) {
-                    sel.add(model.getObjectAt(s));
-                }
-                for (T x : sel) {
-                    getController().destroy(x, true);
-                }
-                JOptionPane.showMessageDialog(this, R.RESOURCE_BUNDLE.getString("accion_realizada_correctamente"),
-                        R.RESOURCE_BUNDLE.getString("label_informacion"), JOptionPane.INFORMATION_MESSAGE,
-                        new javax.swing.ImageIcon(getClass().getResource("/restManager/resources/images/exitoso.png")));
-            }
-        } else {
-            getController().setSelected(model.getObjectAtSelectedRow());
-            getController().destroy(getController().getSelected());
-        }
-
-    }
-*/
     @Override
     public void wireUp() {
         jButtonAdd.setAction(getPresenter().getOperation(AbstractListViewPresenter.ACTION_AGREGAR));
@@ -277,19 +246,48 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
                     jButtonEdit.doClick();
                 }
             }
-            
+
         });
-        Bindings.bind(jTextFieldBusqueda, getPresenter().getModel(AbstractListViewModel.PROP_FILTER_BY));
-        Bindings.bind(jLabel1, getPresenter().getModel(AbstractListViewModel.PROP_TITULO_VISTA));
-        Bindings.bind(jLabelCantidad, getPresenter().getModel(AbstractListViewModel.PROP_CATIDAD_ELEMENTOS));
-        jButtonAdd.setIcon(MaterialIcons.ADD);
+
+        jTableList.setRowSorter(model.getSorter());
+        Bindings.bind(jTableList,
+                new SelectionInList(getPresenter().getModel(PROP_LISTA_ELEMENTOS),
+                        getPresenter().getModel(PROP_ELEMENTO_SELECCIONADO)));
+        Bindings.bind(jTextFieldBusqueda, getPresenter().getModel(PROP_FILTER_BY));
+        Bindings.bind(jLabel1, getPresenter().getModel(PROP_TITULO_VISTA));
+        Bindings.bind(jLabelCantidad, getPresenter().getModel(PROP_CATIDAD_ELEMENTOS));
+        jButtonAdd.setIcon(MaterialIcons.ADD.deriveIconTTF(jButtonAdd.getForeground()));
+        jButtonEdit.setIcon(MaterialIcons.EDIT.deriveIconTTF(jButtonEdit.getForeground()));
+        jButtonDelete.setIcon(MaterialIcons.DELETE_FOREVER.deriveIconTTF(jButtonDelete.getForeground()));
+
+
+        model.filterByString("");
     }
 
     @Override
     public void uiInit() {
         initComponents();
+        model = generateTableModel();
+        jTableList.setModel(model);
+        setBackground(DefaultValues.SECONDARY_COLOR_LIGHT);
+
     }
 
-    public abstract BindableTableModel<T> generateTableModel(List<T> items);
+    public abstract BindableTableModel<T> generateTableModel();
+
+    //
+    // Getters Setters
+    //
+    public JPanel getjPanelControlesSuperiores() {
+        return jPanelControlesSuperiores;
+    }
+
+    public JPanel getjPanelExtra() {
+        return jPanelExtra;
+    }
+
+    public JXPanel getjXPanelControles() {
+        return jXPanelControles;
+    }
 
 }

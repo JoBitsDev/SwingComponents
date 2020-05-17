@@ -15,7 +15,7 @@ import util.icon_ttf.IconTTF;
 public class MaterialButton extends _MaterialButton {
 
     public MaterialButton() {
-        setBackground(DefaultValues.BUTTON_COLOR);
+        setBackground(DefaultValues.PRIMARY_COLOR);
         setForeground(Utils.getForegroundAccording(getBackground()));
     }
 

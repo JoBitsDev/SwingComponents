@@ -3,28 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jobits.pos.ui;
-
-import com.jobits.pos.ui.presenters.AbstractViewPresenter;
+package com.jobits.ui.components.swing.containers;
 
 /**
  *
  * @author Jorge
  */
-public abstract class AbstractViewPanel extends ViewPanel {
+public class CollapseMenuContainer extends javax.swing.JPanel {
 
     /**
-     * Creates new form AbstractViewPanel
+     * Creates new form CollapseMenuContainer
      */
-    public AbstractViewPanel() {
+    public CollapseMenuContainer() {
         initComponents();
-    }
-
-    public AbstractViewPanel(AbstractViewPresenter presenter) {
-        initComponents();
-        this.presenter = presenter;
-        uiInit();
-        wireUp();
     }
 
     /**
@@ -36,25 +27,19 @@ public abstract class AbstractViewPanel extends ViewPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(236, 240, 241));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
+            .addGap(0, 298, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGap(0, 501, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    public AbstractViewPresenter getPresenter() {
-        return presenter;
-    }
-
 }

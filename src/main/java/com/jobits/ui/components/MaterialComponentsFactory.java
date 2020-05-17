@@ -16,9 +16,13 @@ import com.jobits.ui.components.swing.containers.MaterialFrame;
 import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
 import com.jobits.ui.components.swing.displayers.MaterialComboBox;
+import components.comboboxes._MaterialComboBox;
 import components.labels._MaterialLabel;
+import components.textfields.validados._MaterialTextFieldMoneyPositive;
+import components.toggle._MaterialCheckBox;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
@@ -27,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import util.materials.MaterialColors;
 import util.materials.MaterialIcons;
 
@@ -85,12 +90,16 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return new MaterialSecondaryButton(MaterialIcons.MENU.deriveIconTTF(30f));
         }
 
+        public static JButton getAddButton() {
+            return new MaterialSecondaryButton(MaterialIcons.ADD.deriveIconTTF(30f));
+        }
+
     }
 
     public static class Displayers {
 
         public static JComboBox getComboBox() {
-            return new MaterialComboBox();
+            return new JComboBox();
         }
 
         public static JLabel getLabel() {
@@ -112,12 +121,24 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return new MaterialTextField(hintName, header);
         }
 
-        public static JFormattedTextField getFormattedTextField(String hintName, String header) {
+        public static JFormattedTextField getFormattedTextField(String hintName, String title) {
             return new JFormattedTextField();
         }
 
-        public static JPasswordField getPasswordField(String hint, String header) {
-            return new MaterialPasswordField(hint, header);
+        public static JPasswordField getPasswordField(String hint, String title) {
+            return new MaterialPasswordField(hint, title);
+        }
+
+        public static JTextField getTextFielPrecioVenta(String hint, String title,String coin) {
+            _MaterialTextFieldMoneyPositive textField = new _MaterialTextFieldMoneyPositive();
+            textField.setHint(hint);
+            textField.setLabel(title);
+            textField.setExtra(coin);
+            return textField;
+        }
+
+        public static JCheckBox getCheckBox() {
+            return new JCheckBox();
         }
 
     }
@@ -125,11 +146,11 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
     public static class Containers {
 
         public static JPanel getTransparentPanel() {
-            return new MaterialPanel();
+            return new MaterialPanel(MaterialColors.TRANSPARENT);
         }
 
         public static JPanel getPrimaryPanel() {
-            return new MaterialPanel();
+            return new MaterialPanel(DefaultValues.SECONDARY_COLOR_LIGHT);
         }
 
         public static JFrame getMaterialWindow() {
@@ -145,11 +166,11 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JPanel getSecondaryPanel() {
-            return new MaterialPanel(MaterialColors.BLUEA_100);
+            return new MaterialPanel(MaterialColors.WHITE);
         }
 
         public static JPanel getHeaderPanel() {
-            return new MaterialPanel(DefaultValues.SECONDARY_PANEL_COLOR);
+            return new MaterialPanel(DefaultValues.SECONDARY_COLOR_LIGHT);
         }
 
     }

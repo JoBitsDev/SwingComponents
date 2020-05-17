@@ -21,6 +21,10 @@ import javax.swing.JComponent;
  */
 public class NotificationDialog extends javax.swing.JDialog {
 
+    static void Error(String text) {
+        
+    }
+
     Timer timer = null;
     TimerTask task;
     int i = 32;
@@ -57,6 +61,9 @@ public class NotificationDialog extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         jButton_Close = new MaterialButton();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(300, 300));
@@ -71,6 +78,7 @@ public class NotificationDialog extends javax.swing.JDialog {
             }
         });
 
+        jPanel3.setBorder(new org.jdesktop.swingx.border.DropShadowBorder());
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         jButton_Close.setBackground(new java.awt.Color(255, 51, 51));
@@ -88,12 +96,17 @@ public class NotificationDialog extends javax.swing.JDialog {
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder1 = new org.jdesktop.swingx.border.DropShadowBorder();
-        dropShadowBorder1.setShowLeftShadow(true);
-        dropShadowBorder1.setShowTopShadow(true);
-        jPanel1.setBorder(dropShadowBorder1);
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jButton1.setText("Cancelar");
+        jPanel2.add(jButton1);
+
+        jButton2.setText("Aceptar");
+        jPanel2.add(jButton2);
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -117,8 +130,11 @@ public class NotificationDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton_CloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_Close;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
