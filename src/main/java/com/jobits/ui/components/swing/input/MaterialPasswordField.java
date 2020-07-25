@@ -1,6 +1,7 @@
 package com.jobits.ui.components.swing.input;
 
-import components.passwordfields._MaterialPasswordField;
+import com.jhw.swing.material.components.passwordfield._MaterialPasswordField;
+
 
 /**
  * A Material Design password field.

@@ -5,14 +5,13 @@
  */
 package com.jobits.ui.components.swing.buttons;
 
+import com.jhw.swing.material.components.button._MaterialButton;
+import com.jhw.swing.material.standars.MaterialColors;
+import com.jhw.swing.util.icons.icon_ttf.IconTTF;
 import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.utils.MaterialIcons;
-import components.buttons._MaterialButton;
 import javax.swing.Icon;
 import javax.swing.border.LineBorder;
-import ui.utils.MaterialBorders;
-import util.icon_ttf.IconTTF;
-import util.materials.MaterialColors;
 
 /**
  *
@@ -32,7 +31,7 @@ public class MaterialSecondaryButton extends _MaterialButton {
 
     public MaterialSecondaryButton(Icon icon) {
         this();
-        setIcon(((IconTTF)icon).deriveIconTTF(getForeground()));
+        setIcon(((IconTTF)icon).deriveIcon(getForeground()));
     }
 
 

@@ -8,7 +8,7 @@ import com.jobits.pos.ui.presenters.AbstractListViewPresenter;
 import com.jobits.pos.ui.utils.BindableTableModel;
 import com.jobits.pos.ui.viewmodel.AbstractListViewModel;
 import com.jobits.ui.components.MaterialComponentsFactory;
-import util.materials.MaterialIcons;
+import com.jhw.swing.material.standars.MaterialIcons;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
@@ -256,9 +256,9 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         Bindings.bind(jTextFieldBusqueda, getPresenter().getModel(PROP_FILTER_BY));
         Bindings.bind(jLabel1, getPresenter().getModel(PROP_TITULO_VISTA));
         Bindings.bind(jLabelCantidad, getPresenter().getModel(PROP_CATIDAD_ELEMENTOS));
-        jButtonAdd.setIcon(MaterialIcons.ADD.deriveIconTTF(jButtonAdd.getForeground()));
-        jButtonEdit.setIcon(MaterialIcons.EDIT.deriveIconTTF(jButtonEdit.getForeground()));
-        jButtonDelete.setIcon(MaterialIcons.DELETE_FOREVER.deriveIconTTF(jButtonDelete.getForeground()));
+        jButtonAdd.setIcon(MaterialIcons.ADD.deriveIcon(jButtonAdd.getForeground()));
+        jButtonEdit.setIcon(MaterialIcons.EDIT.deriveIcon(jButtonEdit.getForeground()));
+        jButtonDelete.setIcon(MaterialIcons.DELETE_FOREVER.deriveIcon(jButtonDelete.getForeground()));
 
 
         model.filterByString("");

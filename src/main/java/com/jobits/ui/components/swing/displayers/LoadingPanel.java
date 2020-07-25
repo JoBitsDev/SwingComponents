@@ -5,14 +5,13 @@
  */
 package com.jobits.ui.components.swing.displayers;
 
+import com.jhw.swing.material.components.labels._MaterialLabel;
+import com.jhw.swing.material.components.progress._MaterialProgressSpinner;
+import com.jhw.swing.material.standars.MaterialFontRoboto;
 import com.jobits.ui.components.swing.containers.MaterialPanel;
-import components.labels._MaterialLabel;
-import components.progress._MaterialProgressSpinner;
 import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.JLabel;
-import ui.componentsui.progressbar.MaterialProgressBarUI;
-import util.materials.MaterialFontRoboto;
 
 /**
  *

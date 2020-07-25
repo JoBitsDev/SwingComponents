@@ -5,27 +5,32 @@
  */
 package com.jobits.ui.components.swing.containers;
 
+import com.jobits.pos.ui.DefaultValues;
+import com.jobits.ui.components.MaterialComponentsFactory;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JPanel;
 import org.jdesktop.swingx.JXCollapsiblePane;
-import org.jdesktop.swingx.JXTaskPaneContainer;
-import org.jdesktop.swingx.VerticalLayout;
 
 /**
  *
  * @author Jorge
  */
+//TODO: el tooltip funciona raro
+//TODO: popup panel para cuando esta encogido el panel
+//TODO: hacerlo personalizable el string de la cantidad
+//TODO: crear un collapse menu que sea solo y no tenga submenu
+//TODO: fondo personalizable
+//TODO: 
 public class CollapseMenu extends JPanel {
 
     public static final String PROP_COLLAPSE = "Collapse";
@@ -42,14 +47,20 @@ public class CollapseMenu extends JPanel {
 
     }
 
+    /**
+     * @deprecated no usar porque no funciona muy bien con el popup
+     * @param item
+     */
     public void addMenuItem(Component item) {
         jPanelSubActions.add(item);
+        jPopupMenu1.add(item);
         jLabel1.setText("" + jPanelSubActions.getComponentCount());
     }
 
     public Component addMenuItem(Action action) {
         Component c = jPanelSubActions.add(buildFromAction(action));
         jLabel1.setText("" + jPanelSubActions.getComponentCount());
+        jPopupMenu1.add(action);
         return c;
     }
 
@@ -63,13 +74,18 @@ public class CollapseMenu extends JPanel {
     private void initComponents() {
 
         jPanelSubActions = new org.jdesktop.swingx.JXTaskPaneContainer();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanelFixed = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelNombre = new javax.swing.JLabel();
-        jLabelIcono = new javax.swing.JLabel();
+        jButtonIcono = new javax.swing.JButton();
+        jButtonNombre = new javax.swing.JButton();
         jPanelCollapsible = new org.jdesktop.swingx.JXCollapsiblePane();
 
-        setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 5));
+        org.jdesktop.swingx.VerticalLayout verticalLayout1 = new org.jdesktop.swingx.VerticalLayout();
+        verticalLayout1.setGap(14);
+        jPanelSubActions.setLayout(verticalLayout1);
+
+        setMinimumSize(new java.awt.Dimension(90, 90));
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
 
@@ -85,66 +101,65 @@ public class CollapseMenu extends JPanel {
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanelFixed.add(jLabel1, java.awt.BorderLayout.LINE_END);
 
-        jLabelNombre.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNombre.setText("<Nombre Categoria>");
-        jLabelNombre.setPreferredSize(new java.awt.Dimension(134, 60));
-        jPanelFixed.add(jLabelNombre, java.awt.BorderLayout.CENTER);
+        jButtonIcono.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonIcono.setMaximumSize(new java.awt.Dimension(80, 80));
+        jButtonIcono.setMinimumSize(new java.awt.Dimension(60, 60));
+        jButtonIcono.setPreferredSize(new java.awt.Dimension(60, 60));
+        jPanelFixed.add(jButtonIcono, java.awt.BorderLayout.LINE_START);
 
-        jLabelIcono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelIcono.setMaximumSize(new java.awt.Dimension(60, 60));
-        jLabelIcono.setPreferredSize(new java.awt.Dimension(60, 60));
-        jLabelIcono.setSize(new java.awt.Dimension(60, 60));
-        jPanelFixed.add(jLabelIcono, java.awt.BorderLayout.LINE_START);
+        jButtonNombre.setFont(new java.awt.Font(".SF NS Text", 0, 18)); // NOI18N
+        jButtonNombre.setText("<Nombre>");
+        jButtonNombre.setBorderPainted(false);
+        jPanelFixed.add(jButtonNombre, java.awt.BorderLayout.CENTER);
 
         add(jPanelFixed, java.awt.BorderLayout.PAGE_START);
 
         jPanelCollapsible.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 60, 10, 1));
         jPanelCollapsible.setDirection(org.jdesktop.swingx.JXCollapsiblePane.Direction.DOWN);
         jPanelCollapsible.setOpaque(false);
-        add(jPanelCollapsible, java.awt.BorderLayout.PAGE_END);
+        add(jPanelCollapsible, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void shrink() {
+        onMouseCLicked();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonIcono;
+    private javax.swing.JButton jButtonNombre;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelIcono;
-    private javax.swing.JLabel jLabelNombre;
     private org.jdesktop.swingx.JXCollapsiblePane jPanelCollapsible;
     private javax.swing.JPanel jPanelFixed;
     private org.jdesktop.swingx.JXTaskPaneContainer jPanelSubActions;
+    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 
     private Component buildFromAction(Action a) {
-        return new TaskButton(a,jPanelSubActions.getWidth());
+        return new TaskButton(a, jPanelSubActions.getWidth());
     }
 
     private void configurateUI() {
         jPanelCollapsible.setLayout(new BorderLayout());
         jPanelCollapsible.add(jPanelSubActions, BorderLayout.CENTER);
-        jLabelIcono.setText("");
-        jLabelIcono.setIcon(iconoCategoria);
-        jLabelNombre.setText(nombreCategoria);
-        //setBackground(new Color(255, 255, 255, 40));
-
+        jButtonIcono.setText("");
+        jButtonIcono.setIcon(iconoCategoria);
+        jButtonIcono.setBorderPainted(false);
+        jButtonIcono.setContentAreaFilled(false);
+        jButtonNombre.setText(nombreCategoria);
+        jButtonNombre.setContentAreaFilled(false);
+        jButtonNombre.setBorderPainted(false);
+        setBackground(DefaultValues.SECONDARY_COLOR);
+        
         jPanelCollapsible.addPropertyChangeListener((PropertyChangeEvent evt) -> {
             if (evt.getPropertyName().equals("collapse")) {
                 setOpaque(!jPanelCollapsible.isCollapsed());
             }
         });
-        jPanelFixed.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                onMouseClicked(e);
-            }
-
+        jButtonIcono.addActionListener((ActionEvent e) -> {
+            onMouseCLicked();
         });
-        jLabelIcono.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                onMouseClicked(e);
-            }
-
+        jButtonNombre.addActionListener((ActionEvent e) -> {
+            onMouseCLicked();
         });
 
         addComponentListener(new ComponentAdapter() {
@@ -153,7 +168,12 @@ public class CollapseMenu extends JPanel {
                 super.componentResized(e); //To change body of generated methods, choose Tools | Templates.
                 if (isShinked()) {
                     jPanelCollapsible.setCollapsed(true);
+                    jButtonIcono.setToolTipText(nombreCategoria);
+
+                } else {
+                    jButtonIcono.setToolTipText("");
                 }
+
             }
 
         });
@@ -161,20 +181,20 @@ public class CollapseMenu extends JPanel {
     }
 
     private boolean isShinked() {
-        return getSize().width < 70;
+        return getSize().width < 85;//TODO: personalizar tamanno del menu
     }
 
-    private void createPopupPanel(MouseEvent e) {
-        Logger.getLogger(getClass().getName()).log(Level.WARNING, "En desarrollo");
+    private void createPopupPanel() {
+        jPopupMenu1.show(this, jButtonIcono.getBounds().x + jButtonIcono.getWidth(), jButtonIcono.getBounds().y);
+        //  Logger.getLogger(getClass().getName()).log(Level.WARNING, "En desarrollo");
     }
 
-    private void onMouseClicked(MouseEvent e) {
+    private void onMouseCLicked() {
         if (isShinked()) {
-            createPopupPanel(e);
+            createPopupPanel();
         } else {
             jPanelCollapsible.getActionMap().get(JXCollapsiblePane.TOGGLE_ACTION).actionPerformed(null);
         }
-        jLabelIcono.setToolTipText(isShinked() ? nombreCategoria : "");
 
     }
 

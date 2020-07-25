@@ -1,6 +1,7 @@
 package com.jobits.ui.components.swing.input;
 
-import components.textfields._MaterialTextField;
+import com.jhw.swing.material.components.textfield._MaterialTextField;
+
 
 
 /**

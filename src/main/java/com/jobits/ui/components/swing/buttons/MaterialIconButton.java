@@ -5,8 +5,8 @@
  */
 package com.jobits.ui.components.swing.buttons;
 
-import components.buttons._MaterialIconButtonTranspRect;
 import javax.swing.Icon;
+import com.jhw.swing.material.components.button._MaterialIconButtonRound;
 
 /**
  *
@@ -15,7 +15,7 @@ import javax.swing.Icon;
  * @author Jorge
  *
  */
-public class MaterialIconButton extends _MaterialIconButtonTranspRect {
+public class MaterialIconButton extends _MaterialIconButtonRound {
 
     public MaterialIconButton(Icon icon) {
         setIcon(icon);

@@ -18,7 +18,7 @@ import java.util.Arrays;
  * and thus can be used directly.
  * @author DragShot
  */
-public class Utils {
+public class Utils2 {
     /**
      * A boolean flag for {@code getScreenSize()}, signaling if
      * {@code sun.java2d.SunGraphicsEnvironment.getUsableBounds()} is available

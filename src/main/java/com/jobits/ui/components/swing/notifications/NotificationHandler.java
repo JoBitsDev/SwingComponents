@@ -6,16 +6,16 @@
 package com.jobits.ui.components.swing.notifications;
 
 import com.jobits.pos.notification.TipoNotificacion;
-import bundles.toast.TOAST;
-import bundles.toast.types.notification.DialogNotificationToastGeneral;
+import com.jhw.swing.notification.toast.TOAST;
+import com.jhw.swing.notification.toast.types.notification.DialogNotificationToastGeneral;
+import com.jhw.swing.material.standars.MaterialColors;
+import com.jhw.swing.material.standars.MaterialIcons;
 import com.jobits.pos.notification.NotificationChannel;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.KeyboardFocusManager;
 import java.util.Optional;
 import javax.swing.JOptionPane;
-import util.materials.MaterialColors;
-import util.materials.MaterialIcons;
 
 /**
  *

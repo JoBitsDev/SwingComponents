@@ -12,7 +12,7 @@ repositories {
     
 dependencies {
     testCompile 'junit:junit:4.12'
-   
     implementation project(':core')
+    implementation project(':Material')
 }
 

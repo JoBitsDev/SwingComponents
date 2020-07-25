@@ -5,9 +5,8 @@
  */
 package com.jobits.ui.components.swing.containers;
 
+import com.jhw.swing.material.standars.MaterialColors;
 import com.jobits.pos.ui.DefaultValues;
-import components.buttons._MaterialButton;
-import components.labels._MaterialLabel;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -24,20 +23,25 @@ import javax.swing.SwingConstants;
  * @author Jorge
  *
  */
-public class TaskButton extends _MaterialLabel {
+public class TaskButton extends JButton {
 
     public TaskButton(Action a) {
-        super();
+        setAction(a);
         setText(a.getValue(Action.NAME).toString());
         setFont(getFont().deriveFont(24f));
-        setForeground(DefaultValues.PRIMARY_COLOR);
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                a.actionPerformed(null);
-            }
-
-        });
+        setForeground(DefaultValues.SECONDARY_COLOR);
+        setBackground(MaterialColors.TRANSPARENT);
+        setHorizontalTextPosition(SwingConstants.LEADING);
+        setHorizontalAlignment(SwingConstants.LEADING);
+        setBorderPainted(false);
+        setContentAreaFilled(false);
+//        addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                a.actionPerformed(null);
+//            }
+//
+//        });
     }
 
     public TaskButton(Action a, int width) {

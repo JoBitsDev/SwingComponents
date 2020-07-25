@@ -6,7 +6,8 @@
 
 package com.jobits.ui.components.swing.displayers;
 
-import components.comboboxes._MaterialComboBox;
+import com.jhw.swing.material.components.combobox._MaterialComboBox;
+
 
 /**
  * 

@@ -1,7 +1,7 @@
 package com.jobits.ui.components.swing.containers;
 
+import com.jhw.swing.material.components.container.panel._MaterialPanel;
 import com.jobits.ui.utils.MaterialColor;
-import components.containers.panels._MaterialPanel;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -29,7 +29,6 @@ import java.awt.*;
  */
 public class MaterialPanel extends _MaterialPanel {
 
-
     /**
      * Creates a new {@code MaterialPanel}. These panels cast a shadow below
      * them, although technically it is painted inside its borders. If you don't
@@ -37,12 +36,11 @@ public class MaterialPanel extends _MaterialPanel {
      */
     public MaterialPanel(Color backgroundColor) {
         setBackground(backgroundColor);
+        setElevation(0);
     }
 
     public MaterialPanel() {
+        setElevation(0);
     }
-    
-    
-
 
 }

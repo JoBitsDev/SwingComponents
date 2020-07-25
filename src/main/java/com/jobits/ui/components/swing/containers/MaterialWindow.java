@@ -1,5 +1,6 @@
 package com.jobits.ui.components.swing.containers;
 
+import com.jhw.swing.material.standars.MaterialShadow;
 import com.jobits.ui.utils.MaterialColor;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -7,8 +8,7 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
-import com.jobits.ui.utils.Utils;
-import util.materials.MaterialShadow;
+import com.jobits.ui.utils.Utils2;
 
 /**
  * A {@code MaterialWindow} is the prefered top-level container for your
@@ -39,7 +39,7 @@ public class MaterialWindow extends JFrame {
      */
     public MaterialWindow() {
         setUndecorated(true);
-        if (Utils.isTranslucencySupported()) {
+        if (Utils2.isTranslucencySupported()) {
             setBackground(MaterialColor.TRANSPARENT);
             //This default behavior should NOT be set here!
             //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

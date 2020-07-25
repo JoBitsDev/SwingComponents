@@ -1,11 +1,11 @@
 package com.jobits.ui.components.swing.buttons;
 
+import com.jhw.swing.material.components.button._MaterialButton;
+import com.jhw.swing.util.icons.icon_ttf.IconTTF;
 import com.jobits.pos.ui.DefaultValues;
-import components.buttons._MaterialButton;
 import java.awt.Color;
 import javax.swing.Icon;
-import util.Utils;
-import util.icon_ttf.IconTTF;
+import com.jhw.swing.util.Utils;
 
 /**
  * A Material Design button.
@@ -22,7 +22,7 @@ public class MaterialButton extends _MaterialButton {
     public MaterialButton(Icon icon) {
         this();
         setText("");
-        setIcon(((IconTTF)icon).deriveIconTTF(getForeground()));
+        setIcon(((IconTTF)icon).deriveIcon(getForeground()));
         setSize(40, 40);
     }
 

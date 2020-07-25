@@ -1,10 +1,11 @@
 package com.jobits.ui.components.swing.containers;
 
+import com.jhw.swing.material.standars.MaterialShadow;
 import com.jobits.ui.components.swing.buttons.MaterialButton;
 import com.jobits.ui.utils.MaterialColor;
 import com.jobits.ui.utils.MaterialIcons;
 import com.jobits.ui.utils.Roboto;
-import com.jobits.ui.utils.Utils;
+import com.jobits.ui.utils.Utils2;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -16,58 +17,64 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import util.materials.MaterialShadow;
 
 /**
  * A {@code MaterialFrameWrapper} is a set of components meant to provide
  * standard appearance and behavior to a {@link MaterialFrame}, like a title bar
  * with command buttons, iconifying/deiconifying and resizing.
- * 
+ *
  * @author DragShot
  */
 public class MaterialFrameWrapper {
-    /** The frame this object wraps around. */
-    private MaterialFrame frame;
-    private MaterialTitleBar titleBar;
+
+    /**
+     * The frame this object wraps around.
+     */
+    protected MaterialFrame frame;
+    protected MaterialTitleBar titleBar;
 
     public MaterialFrameWrapper(MaterialFrame frame) {
         this.frame = frame;
         titleBar = new MaterialTitleBar(frame);
     }
-    
+
     /**
      * Wraps the decorators bundled with this {@code MaterialFrameWrapper}
      * around the target frame's container panel. This is called by the frame
      * once its container panel is set and in place.
-     * @param contentPane 
+     *
+     * @param contentPane
      */
     public void wrapAround(Container contentPane) {
         Container root = contentPane.getParent();
         root.add(titleBar);
         titleBar.setVisible(true);
     }
-    
+
     /**
      * Sets the default color of this wrapper. This affects the decorations
      * bundled with it, like the title bar and control buttons.
+     *
      * @param color the new color of this wrapper.
      * @see MaterialFrame#setColor(java.awt.Color)
      */
     public void setColor(Color color) {
         titleBar.setBackground(color);
     }
-    
+
     /**
      * Gets the default color of this wrapper. More precisely, the color of the
      * decorations bundled with it, like the title bar and control buttons.
+     *
      * @return the current color of this wrapper.
      * @see MaterialFrame#getColor()
      */
     public Color getColor() {
         return titleBar.getBackground();
     }
-    
+
     /**
      * This method is called by the {@link MaterialFrame} being wrapped when the
      * title in the title bar needs to be updated.
@@ -75,12 +82,13 @@ public class MaterialFrameWrapper {
     public void updateTitle() {
         titleBar.setTitle(frame.getTitle());
     }
-    
+
     /**
      * Causes this wrapper to lay out its components around the frame's
      * container pane. It is called from {@link MaterialFrame#doLayout()}, which
      * is triggered each time the frame is resized. You can also request the
      * layout to be done by calling {@link JFrame#validate()}.
+     *
      * @see JFrame#validate
      */
     public void doLayout() {
@@ -90,21 +98,22 @@ public class MaterialFrameWrapper {
                 frame.getWindowWidth(),
                 frame.getWindowHeight() - titleBar.getHeight());
     }
-    
+
     protected static class MaterialTitleBar extends JPanel
-                implements ActionListener {
+            implements ActionListener {
+
         private FrameControler control;
         private MaterialFrame frame;
-        
+
         private MaterialButton btnClose;
         private MaterialButton btnMinimize;
         private MaterialButton btnMaximize;
         private MaterialButton btnRestore;
-        
+
         private JLabel titleLabel;
-        
+
         private boolean ready = false;
-        
+
         protected MaterialTitleBar(MaterialFrame frame) {
             this.frame = frame;
             control = new FrameControler(frame);
@@ -165,25 +174,26 @@ public class MaterialFrameWrapper {
             ready = true;
             setBackground(MaterialColor.INDIGO_500);
         }
-        
+
         /**
          * Sets the title of this {@link MaterialTitleBar}.
+         *
          * @param title the title to display
          */
         public void setTitle(String title) {
             titleLabel.setText(title);
         }
-        
+
         @Override
         public void setBackground(Color bg) {
             super.setBackground(bg);
             if (ready) {
                 Color btn;
-                if (Utils.isDark(bg)) {
-                    btn = Utils.brighten(bg);
+                if (Utils2.isDark(bg)) {
+                    btn = Utils2.brighten(bg);
                     titleLabel.setForeground(MaterialColor.WHITE);
                 } else {
-                    btn = Utils.darken(bg);
+                    btn = Utils2.darken(bg);
                     titleLabel.setForeground(MaterialColor.BLACK);
                 }
                 btnMinimize.setBackground(btn);
@@ -194,7 +204,7 @@ public class MaterialFrameWrapper {
                 btnRestore.setRippleColor(bg);
             }
         }
-        
+
         @Override
         public void actionPerformed(ActionEvent evt) {
             if (evt.getSource() == btnClose) {
@@ -207,50 +217,50 @@ public class MaterialFrameWrapper {
                 control.restore();
             }
         }
-        
+
         @Override
         public void doLayout() {
             boolean max = (frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH;
             int hpad = MaterialShadow.OFFSET_LEFT + MaterialShadow.OFFSET_RIGHT;
             int vpad = MaterialShadow.OFFSET_TOP + MaterialShadow.OFFSET_BOTTOM;
             btnClose.setBounds(this.getWidth() - 48 - MaterialShadow.OFFSET_LEFT - 10,
-                0 - MaterialShadow.OFFSET_TOP, 48 + hpad, 24 + vpad);
+                    0 - MaterialShadow.OFFSET_TOP, 48 + hpad, 24 + vpad);
             if (frame.isResizable()) {
                 if (max) {
                     btnRestore.setBounds(this.getWidth() - 78 - MaterialShadow.OFFSET_LEFT - 10,
-                        0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
-                    btnMaximize.setBounds(0,0,0,0);
+                            0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
+                    btnMaximize.setBounds(0, 0, 0, 0);
                     btnMaximize.setVisible(false);
                     btnRestore.setVisible(true);
                 } else {
                     btnMaximize.setBounds(this.getWidth() - 78 - MaterialShadow.OFFSET_LEFT - 10,
-                        0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
-                    btnRestore.setBounds(0,0,0,0);
+                            0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
+                    btnRestore.setBounds(0, 0, 0, 0);
                     btnMaximize.setVisible(true);
                     btnRestore.setVisible(false);
                 }
                 btnMinimize.setBounds(this.getWidth() - 108 - MaterialShadow.OFFSET_LEFT - 10,
-                    0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
+                        0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
             } else {
                 btnMinimize.setBounds(this.getWidth() - 78 - MaterialShadow.OFFSET_LEFT - 10,
-                    0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
-                btnMaximize.setBounds(0,0,0,0);
+                        0 - MaterialShadow.OFFSET_TOP, 30 + hpad, 24 + vpad);
+                btnMaximize.setBounds(0, 0, 0, 0);
                 btnMaximize.setVisible(false);
-                btnRestore.setBounds(0,0,0,0);
+                btnRestore.setBounds(0, 0, 0, 0);
                 btnRestore.setVisible(false);
             }
             titleLabel.setBounds(MaterialShadow.OFFSET_LEFT, 0,
-                this.getWidth() - MaterialShadow.OFFSET_TOP*2
-                - (btnClose.getWidth()-MaterialShadow.OFFSET_LEFT)
-                - Math.max(btnRestore.getWidth()-hpad,0)
-                - Math.max(btnMaximize.getWidth()-hpad,0)
-                - (btnMinimize.getWidth()-hpad), getMinimumSize().height);
+                    this.getWidth() - MaterialShadow.OFFSET_TOP * 2
+                    - (btnClose.getWidth() - MaterialShadow.OFFSET_LEFT)
+                    - Math.max(btnRestore.getWidth() - hpad, 0)
+                    - Math.max(btnMaximize.getWidth() - hpad, 0)
+                    - (btnMinimize.getWidth() - hpad), getMinimumSize().height);
         }
-        
+
         private MouseAdapter getControlListener() {
             return new MouseAdapter() {
-                boolean moving=false;
-                int[][] movs={{0,0},{0,0}};
+                boolean moving = false;
+                int[][] movs = {{0, 0}, {0, 0}};
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -268,7 +278,7 @@ public class MaterialFrameWrapper {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     if (e.getButton() == MouseEvent.BUTTON1
-                        && (frame.getExtendedState() & Frame.MAXIMIZED_BOTH) != Frame.MAXIMIZED_BOTH) {
+                            && (frame.getExtendedState() & Frame.MAXIMIZED_BOTH) != Frame.MAXIMIZED_BOTH) {
                         moving = true;
                         movs[1][0] = e.getXOnScreen();
                         movs[1][1] = e.getYOnScreen();
@@ -278,14 +288,14 @@ public class MaterialFrameWrapper {
                 @Override
                 public void mouseReleased(MouseEvent e) {
                     if (e.getButton() == MouseEvent.BUTTON1
-                        && (frame.getExtendedState() & Frame.MAXIMIZED_BOTH) != Frame.MAXIMIZED_BOTH) {
+                            && (frame.getExtendedState() & Frame.MAXIMIZED_BOTH) != Frame.MAXIMIZED_BOTH) {
                         moving = false;
                     }
                 }
 
                 @Override
                 @SuppressWarnings("deprecated")
-                public void mouseDragged(MouseEvent e){
+                public void mouseDragged(MouseEvent e) {
                     if (moving) {
                         System.arraycopy(movs[1], 0, movs[0], 0, 2);
                         movs[1][0] = e.getXOnScreen();
@@ -300,19 +310,22 @@ public class MaterialFrameWrapper {
             };
         }
     }
-    
+
     /**
      * A {@code FrameControler} provides an easy way to perform operations that
      * change the window state and size as minimizing, maximizing and restoring.
      */
     protected static class FrameControler {
-        /** The {@link MaterialFrame} being controled. */
+
+        /**
+         * The {@link MaterialFrame} being controled.
+         */
         MaterialFrame frame;
 
         protected FrameControler(MaterialFrame frame) {
             this.frame = frame;
         }
-        
+
         /**
          * This method iconifies (minimizes) a frame into the task bar. The
          * maximized bits are not affected.
@@ -354,9 +367,9 @@ public class MaterialFrameWrapper {
          */
         @SuppressWarnings("unchecked")
         public void maximize() {
-            //java.awt.Rectangle usableBounds = Utils.getScreenSize();
+            //java.awt.Rectangle usableBounds = Utils2.getScreenSize();
             //frame.setMaximizedBounds(new java.awt.Rectangle(0, 0, usableBounds.width, usableBounds.height));
-            frame.setMaximizedBounds(Utils.getScreenSize());
+            frame.setMaximizedBounds(Utils2.getScreenSize());
 //            frame.setExtendedState((frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH ? Frame.NORMAL : Frame.MAXIMIZED_BOTH);
             int state = frame.getExtendedState();
             // Set the maximized bits
@@ -364,12 +377,14 @@ public class MaterialFrameWrapper {
             // Maximize the frame
             frame.setExtendedState(state);
         }
-        
+
         /**
          * This method closes a frame.
          */
-        public void close(){
-            frame.processWindowEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+        public void close() {
+            if (JOptionPane.showConfirmDialog(frame, "Desea cerrar la aplicacion?","Salir",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                frame.processWindowEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
         }
     }
 }

@@ -14,9 +14,9 @@ import javax.swing.JPanel;
  */
 public class MaterialFrame extends MaterialWindow {
     /** The wrapper providing Frame appearance and behavior. */
-    private MaterialFrameWrapper wrapper;
+    protected MaterialFrameWrapper wrapper;
     /** The panel containing the components placed inside this frame. */
-    private Container contentPane;
+    protected Container contentPane;
     
     public MaterialFrame() {
         contentPane = new JPanel();

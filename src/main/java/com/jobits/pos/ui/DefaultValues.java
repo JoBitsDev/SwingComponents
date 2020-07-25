@@ -8,7 +8,7 @@ package com.jobits.pos.ui;
 import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import util.materials.MaterialColors;
+import com.jhw.swing.material.standars.MaterialColors;
 
 /**
  *
