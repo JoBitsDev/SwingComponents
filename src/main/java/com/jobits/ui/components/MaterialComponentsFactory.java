@@ -23,7 +23,9 @@ import com.jobits.ui.components.swing.containers.MaterialPanel;
 import com.jobits.ui.components.swing.containers.MaterialFrame;
 import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
+import com.jobits.ui.components.swing.displayers.Card;
 import com.jobits.ui.components.swing.displayers.MaterialComboBox;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -138,6 +140,21 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 
         }
 
+        public static JPanel getLongCard(
+                String imageURL,
+                String title,
+                String secondaryText,
+                String mediaURL,
+                String supportText,
+                Action mainButtonAction,
+                Action secundaryButtonAction) {
+            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction);
+        }
+
+        public static JPanel getSmallCard(String imageURL, String title, String secondaryText) {
+            return new Card(imageURL, title, secondaryText);
+        }
+        
     }
 
     public static class Input {
@@ -215,12 +232,11 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 //        public static  getMaterialLooks() throws UnsupportedLookAndFeelException {
 //            return new ;
 //        }
-
         public static TabbedPaneUI getTabbedPaneUI() {
-           return new MaterialTabbedPaneUI();
+            return new MaterialTabbedPaneUI();
         }
 
-        public static LookAndFeel getLooks() throws UnsupportedLookAndFeelException{
+        public static LookAndFeel getLooks() throws UnsupportedLookAndFeelException {
             return new MaterialLookAndFeel();
         }
 
