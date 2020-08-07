@@ -5,6 +5,7 @@
  */
 package com.jobits.ui.components;
 
+import com.jgoodies.binding.value.ValueModel;
 import com.jhw.swing.material.components.datepicker._JXDatePicker;
 import com.jhw.swing.material.components.labels._MaterialLabel;
 import com.jhw.swing.material.components.scrollpane._MaterialScrollPaneCore;
@@ -140,21 +141,35 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 
         }
 
-        public static JPanel getLongCard(
+        public static Card getLongCard(
                 String imageURL,
                 String title,
                 String secondaryText,
                 String mediaURL,
                 String supportText,
                 Action mainButtonAction,
-                Action secundaryButtonAction) {
-            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction);
+                Action secundaryButtonAction,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction, null, menuActions);
         }
 
-        public static JPanel getSmallCard(String imageURL, String title, String secondaryText) {
-            return new Card(imageURL, title, secondaryText);
+        public static Card getSmallCard(
+                String imageURL,
+                String title,
+                String secondaryText,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, menuActions);
         }
-        
+
+        public static Card getSmallCardValueModel(
+                String imageURL,
+                String title,
+                String secondaryText,
+                ValueModel valueModel,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, valueModel, menuActions);
+        }
+
     }
 
     public static class Input {

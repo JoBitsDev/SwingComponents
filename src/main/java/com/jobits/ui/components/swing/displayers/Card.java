@@ -5,8 +5,14 @@
  */
 package com.jobits.ui.components.swing.displayers;
 
+import com.jgoodies.binding.adapter.Bindings;
+import com.jgoodies.binding.value.ValueModel;
+import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.components.MaterialComponentsFactory;
+import com.jobits.ui.components.swing.containers.CollapseMenu;
+import com.jobits.ui.components.swing.containers.TaskButton;
 import java.awt.AlphaComposite;
+import java.awt.Component;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
@@ -19,6 +25,9 @@ import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import com.jhw.swing.material.standars.MaterialIcons;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,6 +37,8 @@ public class Card extends javax.swing.JPanel {
 
     String imageURL, title, secondaryText, mediaURL, supportText;
     Action mainButtonAction, secundaryButtonAction;
+    ValueModel valueModel;
+    List<Action> menuActionsList = new ArrayList<>();
 
     /**
      * Creates new form LongCard
@@ -39,6 +50,7 @@ public class Card extends javax.swing.JPanel {
      * @param supportText
      * @param mainButtonAction
      * @param secundaryButtonAction
+     * @param valueModel
      */
     public Card(
             String imageURL,
@@ -47,24 +59,42 @@ public class Card extends javax.swing.JPanel {
             String mediaURL,
             String supportText,
             Action mainButtonAction,
-            Action secundaryButtonAction) {
+            Action secundaryButtonAction,
+            ValueModel valueModel,
+            Action... menuActions) {
         this.imageURL = imageURL;
         this.title = title;
+        this.secondaryText = secondaryText;
         this.mediaURL = mediaURL;
         this.supportText = supportText;
         this.mainButtonAction = mainButtonAction;
         this.secundaryButtonAction = secundaryButtonAction;
+        this.valueModel = valueModel;
+        for (Action menuAction : menuActions) {
+            menuActionsList.add(menuAction);
+        }
 
         initComponents();
+        setMenuUI();
         setComponentsInfo();
 
     }
 
     public Card(String imageURL,
             String title,
-            String secondaryText) {
+            String secondaryText,
+            ValueModel valueModel,
+            Action... menuActions) {
 
-        this(imageURL, title, secondaryText, null, null, null, null);
+        this(imageURL, title, secondaryText, null, null, null, null, valueModel, menuActions);
+    }
+
+    public Card(String imageURL,
+            String title,
+            String secondaryText,
+            Action... menuActions) {
+
+        this(imageURL, title, secondaryText, null, null, null, null, null, menuActions);
     }
 
     /**
@@ -81,6 +111,8 @@ public class Card extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabelCardTitle = MaterialComponentsFactory.Displayers.getH3Label();
         jLabelSecondaryText = MaterialComponentsFactory.Displayers.getLabel();
+        jPanelMenu = new javax.swing.JPanel();
+        jButtonMenu = new javax.swing.JButton();
         jPanelMedia = new javax.swing.JPanel();
         jLabelMedia = new javax.swing.JLabel();
         jPanelSupportText = new javax.swing.JPanel();
@@ -89,36 +121,62 @@ public class Card extends javax.swing.JPanel {
         jButtonSecondary = MaterialComponentsFactory.Buttons.getOutlinedButton();
         jButtonPrimary = MaterialComponentsFactory.Buttons.getMaterialButton();
 
-        setPreferredSize(new java.awt.Dimension(350, 450));
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
+        setMaximumSize(new java.awt.Dimension(32773, 500));
+        setMinimumSize(new java.awt.Dimension(256, 55));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanelHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jPanelHeader.setMinimumSize(new java.awt.Dimension(250, 100));
-        jPanelHeader.setPreferredSize(new java.awt.Dimension(250, 50));
-        jPanelHeader.setLayout(new javax.swing.BoxLayout(jPanelHeader, javax.swing.BoxLayout.LINE_AXIS));
+        jPanelHeader.setMaximumSize(new java.awt.Dimension(400, 80));
+        jPanelHeader.setMinimumSize(new java.awt.Dimension(20, 50));
+        jPanelHeader.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanelHeader.setLayout(new java.awt.BorderLayout());
 
         jLabelIcon.setText("<icon>");
         jLabelIcon.setMaximumSize(new java.awt.Dimension(40, 40));
         jLabelIcon.setMinimumSize(new java.awt.Dimension(40, 40));
         jLabelIcon.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanelHeader.add(jLabelIcon);
+        jPanelHeader.add(jLabelIcon, java.awt.BorderLayout.WEST);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         jPanel2.setMaximumSize(new java.awt.Dimension(30000, 30000));
         jPanel2.setMinimumSize(new java.awt.Dimension(150, 40));
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 100));
-        jPanel2.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel2.setLayout(new java.awt.GridLayout(2, 1, 0, 5));
 
-        jLabelCardTitle.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelCardTitle.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelCardTitle.setText("<Card Title>");
         jLabelCardTitle.setMaximumSize(new java.awt.Dimension(3000, 3000));
+        jLabelCardTitle.setMinimumSize(new java.awt.Dimension(20, 25));
+        jLabelCardTitle.setPreferredSize(new java.awt.Dimension(20, 25));
         jPanel2.add(jLabelCardTitle);
 
+        jLabelSecondaryText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabelSecondaryText.setText("<Secondary Text>");
         jLabelSecondaryText.setMaximumSize(new java.awt.Dimension(3000, 3000));
+        jLabelSecondaryText.setMinimumSize(new java.awt.Dimension(20, 16));
+        jLabelSecondaryText.setPreferredSize(new java.awt.Dimension(20, 16));
         jPanel2.add(jLabelSecondaryText);
 
-        jPanelHeader.add(jPanel2);
+        jPanelHeader.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanelMenu.setMaximumSize(new java.awt.Dimension(20, 20));
+        jPanelMenu.setPreferredSize(new java.awt.Dimension(20, 20));
+        jPanelMenu.setLayout(new java.awt.GridLayout(2, 1));
+
+        jButtonMenu.setBackground(jPanelHeader.getBackground());
+        jButtonMenu.setIcon(MaterialIcons.MORE_VERT);
+        jButtonMenu.setMaximumSize(new java.awt.Dimension(20, 10));
+        jButtonMenu.setMinimumSize(new java.awt.Dimension(20, 10));
+        jButtonMenu.setPreferredSize(new java.awt.Dimension(20, 10));
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuActionPerformed(evt);
+            }
+        });
+        jPanelMenu.add(jButtonMenu);
+
+        jPanelHeader.add(jPanelMenu, java.awt.BorderLayout.EAST);
 
         add(jPanelHeader);
 
@@ -133,6 +191,7 @@ public class Card extends javax.swing.JPanel {
         jPanelSupportText.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelSupportText.setMinimumSize(new java.awt.Dimension(0, 50));
 
+        jLabelSupportText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabelSupportText.setText("<Support Text>");
         jPanelSupportText.add(jLabelSupportText);
 
@@ -152,6 +211,26 @@ public class Card extends javax.swing.JPanel {
         add(jPanelActionButtons);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        createPopupPanel();
+    }//GEN-LAST:event_jButtonMenuActionPerformed
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getSecondaryText() {
+        return secondaryText;
+    }
+
+    public String getSupportText() {
+        return supportText;
+    }
+
+    public JLabel getjLabelCardTitle() {
+        return jLabelCardTitle;
+    }
+
     private void setComponentsInfo() {
 
         if (imageURL == null) {
@@ -159,10 +238,12 @@ public class Card extends javax.swing.JPanel {
         } else {
             jLabelIcon.setIcon(circlarShape(imageURL));
         }
-        if (title == null) {
+        if (title == null && valueModel == null) {
             jLabelCardTitle.setVisible(false);
-        } else {
+        } else if (title != null) {
             jLabelCardTitle.setText(title);
+        } else if (valueModel != null) {
+            Bindings.bind(jLabelCardTitle, valueModel);
         }
         if (secondaryText == null) {
             jLabelSecondaryText.setVisible(false);
@@ -171,11 +252,13 @@ public class Card extends javax.swing.JPanel {
         }
         if (mediaURL == null) {
             jLabelMedia.setVisible(false);
+            jPanelMedia.setVisible(false);
         } else {
             jLabelMedia.setIcon(new javax.swing.ImageIcon(mediaURL));
         }
         if (supportText == null) {
             jLabelSupportText.setVisible(false);
+            jPanelSupportText.setVisible(false);
         } else {
             jLabelSupportText.setText(supportText);
         }
@@ -189,6 +272,59 @@ public class Card extends javax.swing.JPanel {
         } else {
             jButtonSecondary.setAction(secundaryButtonAction);
         }
+        if (mainButtonAction == null && secundaryButtonAction == null) {
+            jPanelActionButtons.setVisible(false);
+        }
+        if (menuActionsList.isEmpty()) {
+            jButtonMenu.setVisible(false);
+            jPanelMenu.setVisible(false);
+        } else {
+            for (Action action : menuActionsList) {
+                jPanelSubActions.add(addMenuItem(action));
+            }
+        }
+    }
+
+    private void setMenuUI() {
+        jPanelSubActions = new org.jdesktop.swingx.JXTaskPaneContainer();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+
+        org.jdesktop.swingx.VerticalLayout verticalLayout1 = new org.jdesktop.swingx.VerticalLayout();
+        verticalLayout1.setGap(14);
+        jPanelSubActions.setLayout(verticalLayout1);
+    }
+
+    private org.jdesktop.swingx.JXTaskPaneContainer jPanelSubActions;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonPrimary;
+    private javax.swing.JButton jButtonSecondary;
+    private javax.swing.JLabel jLabelCardTitle;
+    private javax.swing.JLabel jLabelIcon;
+    private javax.swing.JLabel jLabelMedia;
+    private javax.swing.JLabel jLabelSecondaryText;
+    private javax.swing.JLabel jLabelSupportText;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelActionButtons;
+    private javax.swing.JPanel jPanelHeader;
+    private javax.swing.JPanel jPanelMedia;
+    private javax.swing.JPanel jPanelMenu;
+    private javax.swing.JPanel jPanelSupportText;
+    // End of variables declaration//GEN-END:variables
+
+    private Component addMenuItem(Action action) {
+        Component c = jPanelSubActions.add(buildFromAction(action));
+        jPopupMenu1.add(action);
+        return c;
+    }
+
+    private Component buildFromAction(Action a) {
+        return new TaskButton(a, jPanelSubActions.getWidth());
+    }
+
+    private void createPopupPanel() {
+        jPopupMenu1.show(this, jButtonMenu.getBounds().x + jButtonMenu.getWidth(), jButtonMenu.getBounds().y);
     }
 
     public ImageIcon circlarShape(String image) {
@@ -234,19 +370,4 @@ public class Card extends javax.swing.JPanel {
 
     }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonPrimary;
-    private javax.swing.JButton jButtonSecondary;
-    private javax.swing.JLabel jLabelCardTitle;
-    private javax.swing.JLabel jLabelIcon;
-    private javax.swing.JLabel jLabelMedia;
-    private javax.swing.JLabel jLabelSecondaryText;
-    private javax.swing.JLabel jLabelSupportText;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelActionButtons;
-    private javax.swing.JPanel jPanelHeader;
-    private javax.swing.JPanel jPanelMedia;
-    private javax.swing.JPanel jPanelSupportText;
-    // End of variables declaration//GEN-END:variables
 }
