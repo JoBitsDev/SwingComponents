@@ -122,23 +122,27 @@ public class Card extends javax.swing.JPanel {
         jButtonPrimary = MaterialComponentsFactory.Buttons.getMaterialButton();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
+        setToolTipText(null);
         setMaximumSize(new java.awt.Dimension(32773, 500));
         setMinimumSize(new java.awt.Dimension(256, 55));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanelHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelHeader.setToolTipText(null);
         jPanelHeader.setMaximumSize(new java.awt.Dimension(400, 80));
         jPanelHeader.setMinimumSize(new java.awt.Dimension(20, 50));
         jPanelHeader.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanelHeader.setLayout(new java.awt.BorderLayout());
 
         jLabelIcon.setText("<icon>");
+        jLabelIcon.setToolTipText(null);
         jLabelIcon.setMaximumSize(new java.awt.Dimension(40, 40));
         jLabelIcon.setMinimumSize(new java.awt.Dimension(40, 40));
         jLabelIcon.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanelHeader.add(jLabelIcon, java.awt.BorderLayout.WEST);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        jPanel2.setToolTipText(null);
         jPanel2.setMaximumSize(new java.awt.Dimension(30000, 30000));
         jPanel2.setMinimumSize(new java.awt.Dimension(150, 40));
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 40));
@@ -146,6 +150,7 @@ public class Card extends javax.swing.JPanel {
 
         jLabelCardTitle.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelCardTitle.setText("<Card Title>");
+        jLabelCardTitle.setToolTipText(null);
         jLabelCardTitle.setMaximumSize(new java.awt.Dimension(3000, 3000));
         jLabelCardTitle.setMinimumSize(new java.awt.Dimension(20, 25));
         jLabelCardTitle.setPreferredSize(new java.awt.Dimension(20, 25));
@@ -153,6 +158,7 @@ public class Card extends javax.swing.JPanel {
 
         jLabelSecondaryText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabelSecondaryText.setText("<Secondary Text>");
+        jLabelSecondaryText.setToolTipText(null);
         jLabelSecondaryText.setMaximumSize(new java.awt.Dimension(3000, 3000));
         jLabelSecondaryText.setMinimumSize(new java.awt.Dimension(20, 16));
         jLabelSecondaryText.setPreferredSize(new java.awt.Dimension(20, 16));
@@ -160,12 +166,16 @@ public class Card extends javax.swing.JPanel {
 
         jPanelHeader.add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        jPanelMenu.setToolTipText(null);
         jPanelMenu.setMaximumSize(new java.awt.Dimension(20, 20));
         jPanelMenu.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanelMenu.setLayout(new java.awt.GridLayout(2, 1));
 
         jButtonMenu.setBackground(jPanelHeader.getBackground());
+        jButtonMenu.setForeground(jPanelHeader.getBackground());
         jButtonMenu.setIcon(MaterialIcons.MORE_VERT);
+        jButtonMenu.setToolTipText(null);
+        jButtonMenu.setFocusPainted(false);
         jButtonMenu.setMaximumSize(new java.awt.Dimension(20, 10));
         jButtonMenu.setMinimumSize(new java.awt.Dimension(20, 10));
         jButtonMenu.setPreferredSize(new java.awt.Dimension(20, 10));
@@ -180,32 +190,39 @@ public class Card extends javax.swing.JPanel {
 
         add(jPanelHeader);
 
+        jPanelMedia.setToolTipText(null);
         jPanelMedia.setMinimumSize(new java.awt.Dimension(0, 200));
         jPanelMedia.setPreferredSize(new java.awt.Dimension(433, 200));
 
         jLabelMedia.setText("<Media>");
+        jLabelMedia.setToolTipText(null);
         jPanelMedia.add(jLabelMedia);
 
         add(jPanelMedia);
 
         jPanelSupportText.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelSupportText.setToolTipText(null);
         jPanelSupportText.setMinimumSize(new java.awt.Dimension(0, 50));
 
         jLabelSupportText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabelSupportText.setText("<Support Text>");
+        jLabelSupportText.setToolTipText(null);
         jPanelSupportText.add(jLabelSupportText);
 
         add(jPanelSupportText);
 
         jPanelActionButtons.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelActionButtons.setToolTipText(null);
         jPanelActionButtons.setMinimumSize(new java.awt.Dimension(0, 25));
         jPanelActionButtons.setPreferredSize(new java.awt.Dimension(169, 25));
         jPanelActionButtons.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         jButtonSecondary.setText("jButton1");
+        jButtonSecondary.setToolTipText(null);
         jPanelActionButtons.add(jButtonSecondary);
 
         jButtonPrimary.setText("jButton2");
+        jButtonPrimary.setToolTipText(null);
         jPanelActionButtons.add(jButtonPrimary);
 
         add(jPanelActionButtons);
@@ -324,7 +341,8 @@ public class Card extends javax.swing.JPanel {
     }
 
     private void createPopupPanel() {
-        jPopupMenu1.show(this, jButtonMenu.getBounds().x + jButtonMenu.getWidth(), jButtonMenu.getBounds().y);
+        jPopupMenu1.show(jButtonMenu, jButtonMenu.getBounds().x - jPopupMenu1.getWidth(), jButtonMenu.getBounds().y + jButtonMenu.getHeight());
+        jPopupMenu1.show(jButtonMenu, jButtonMenu.getBounds().x - jPopupMenu1.getWidth(), jButtonMenu.getBounds().y + jButtonMenu.getHeight());
     }
 
     public ImageIcon circlarShape(String image) {
