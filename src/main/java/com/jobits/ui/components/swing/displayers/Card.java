@@ -26,6 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import com.jhw.swing.material.standars.MaterialIcons;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +71,10 @@ public class Card extends javax.swing.JPanel {
         this.mainButtonAction = mainButtonAction;
         this.secundaryButtonAction = secundaryButtonAction;
         this.valueModel = valueModel;
-        for (Action menuAction : menuActions) {
-            menuActionsList.add(menuAction);
+        if (menuActions != null) {
+            for (Action menuAction : menuActions) {
+                menuActionsList.add(menuAction);
+            }
         }
 
         initComponents();
@@ -246,6 +249,10 @@ public class Card extends javax.swing.JPanel {
 
     public JLabel getjLabelCardTitle() {
         return jLabelCardTitle;
+    }
+
+    public void setSecondaryTextColor(Color color) {
+        jLabelSecondaryText.setForeground(color);
     }
 
     private void setComponentsInfo() {

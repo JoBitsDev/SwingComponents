@@ -147,16 +147,18 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
                 String secondaryText,
                 String mediaURL,
                 String supportText,
+                ValueModel valueModel,
                 Action mainButtonAction,
                 Action secundaryButtonAction,
                 Action... menuActions) {
-            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction, null, menuActions);
+            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction, valueModel, menuActions);
         }
 
         public static Card getSmallCard(
                 String imageURL,
                 String title,
                 String secondaryText,
+                ValueModel valueModel,
                 Action... menuActions) {
             return new Card(imageURL, title, secondaryText, menuActions);
         }
