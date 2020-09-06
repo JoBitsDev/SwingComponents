@@ -133,7 +133,7 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JLabel getH3Label() {
-            return new _MaterialLabel();
+            return new JLabel();
         }
 
         public static JList getList() {
