@@ -6,6 +6,7 @@
 package com.jobits.ui.components;
 
 import com.jgoodies.binding.value.ValueModel;
+import com.jhw.swing.material.components.combobox.combobox_editable._MaterialComboBoxFiltrable;
 import com.jhw.swing.material.components.datepicker._JXDatePicker;
 import com.jhw.swing.material.components.labels._MaterialLabel;
 import com.jhw.swing.material.components.scrollpane._MaterialScrollPaneCore;
@@ -207,6 +208,9 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return picker;
         }
 
+        public static <T> JComboBox<T> getComboBoxEditable() {
+            return new _MaterialComboBoxFiltrable<T>();
+        }
     }
 
     public static class Containers {
