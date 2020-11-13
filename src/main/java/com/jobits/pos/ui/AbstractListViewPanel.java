@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.jdesktop.swingx.JXPanel;
 import static com.jobits.pos.ui.viewmodel.AbstractListViewModel.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import org.jdesktop.swingx.JXTable;
 
 /**
@@ -28,6 +30,13 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
 
     public AbstractListViewPanel(AbstractListViewPresenter presenter) {
         super(presenter);
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                jTextFieldBusqueda.requestFocus();
+            }
+
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -259,7 +268,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jButtonAdd.setIcon(MaterialIcons.ADD.deriveIcon(jButtonAdd.getForeground()));
         jButtonEdit.setIcon(MaterialIcons.EDIT.deriveIcon(jButtonEdit.getForeground()));
         jButtonDelete.setIcon(MaterialIcons.DELETE_FOREVER.deriveIcon(jButtonDelete.getForeground()));
-
 
         model.filterByString("");
     }
