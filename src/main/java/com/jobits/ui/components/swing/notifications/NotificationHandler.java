@@ -61,6 +61,7 @@ public class NotificationHandler implements NotificationChannel {
                 return Optional.empty();
             case INFO:
                 showMessage(text);
+                return Optional.empty();
             case WARNING:
                 return Optional.of(showConfirmDialog(text));
             case DIALOG_CONFIRM:
