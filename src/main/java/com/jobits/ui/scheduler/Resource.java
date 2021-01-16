@@ -1,5 +1,6 @@
 package com.jobits.ui.scheduler;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.util.Iterator;
 
@@ -16,7 +17,6 @@ public interface Resource {
      *
      * @return (not null) The title of the resource.
      */
-
     String getTitle();
 
     /**
@@ -26,4 +26,6 @@ public interface Resource {
      * @return (not null) Iterator of availabilities.
      */
     Iterator<Availability> getAvailability(LocalDate date);
+
+    Color getColor();
 }
