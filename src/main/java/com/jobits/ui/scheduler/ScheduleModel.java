@@ -1,5 +1,6 @@
 package com.jobits.ui.scheduler;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -54,6 +55,11 @@ public interface ScheduleModel {
      */
     LocalTime getEndTime(LocalDate dateTime);
 
+    /**
+     * Cada cuanto tiempo debe salir una raya en el visual para dividir el tiempo
+     * @return 
+     */
+    Duration getIncrements();
     /**
      * Method to request that the given listener be notified when a resource has
      * been either added or removed from the model.

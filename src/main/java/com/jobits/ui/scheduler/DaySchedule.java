@@ -107,7 +107,7 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
         LocalTime startTime = _model.getStartTime(date);
         LocalTime endTime = _model.getEndTime(date);
 
-        _innerPanel = new InnerPanel(_currentDate, startTime, endTime);
+        _innerPanel = new InnerPanel(_currentDate, startTime, endTime,_model.getIncrements());
         // Attach the listener
         if (_scheduleListener != null) {
             _innerPanel.setScheduleListener(_scheduleListener);
@@ -373,11 +373,11 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
          * @param startTime (not null) Time of the day to start.
          * @param endTime (not null) Time of the day to end.
          */
-        InnerPanel(LocalDate date, LocalTime startTime, LocalTime endTime) {
+        InnerPanel(LocalDate date, LocalTime startTime, LocalTime endTime,Duration increments) {
             _date = date;
             _startTime = startTime;
             _endTime = endTime;
-            _increments = Duration.ofMinutes(15);
+            _increments = increments;
 
             DayScheduleLayout layout = new DayScheduleLayout(startTime, endTime);
 
