@@ -22,7 +22,7 @@ public class DayScheduleLayout implements LayoutManager2 {
 
     // Space to give to the top header.
     private int _topHeader = 25;
-    private int _leftHeader = 75;
+    private int _leftHeader = 85;
 
     private final LocalTime _startTime;
 
