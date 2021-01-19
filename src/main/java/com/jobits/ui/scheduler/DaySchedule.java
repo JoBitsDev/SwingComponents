@@ -100,14 +100,14 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
         _nextResource = 0;
 
         _currentDate = date;
-        _currentDateLabel.setText(date.toString());
+        _currentDateLabel.setVisible(false);
 //        _currentDateLabel.setText(date.toString("EEEE - MMMM d, yyyy"));
 
         // The model knows the begin and end times of the day for this date
         LocalTime startTime = _model.getStartTime(date);
         LocalTime endTime = _model.getEndTime(date);
 
-        _innerPanel = new InnerPanel(_currentDate, startTime, endTime,_model.getIncrements());
+        _innerPanel = new InnerPanel(_currentDate, startTime, endTime, _model.getIncrements());
         // Attach the listener
         if (_scheduleListener != null) {
             _innerPanel.setScheduleListener(_scheduleListener);
@@ -373,7 +373,7 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
          * @param startTime (not null) Time of the day to start.
          * @param endTime (not null) Time of the day to end.
          */
-        InnerPanel(LocalDate date, LocalTime startTime, LocalTime endTime,Duration increments) {
+        InnerPanel(LocalDate date, LocalTime startTime, LocalTime endTime, Duration increments) {
             _date = date;
             _startTime = startTime;
             _endTime = endTime;
@@ -444,7 +444,6 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
             }
 
 //            Period period = Period.from(_increments);
-
             for (LocalTime time = _startTime; time.compareTo(_endTime) < 0; time = time.plus(_increments)) {
                 Integer y = layout.getY(time);
                 if (y != null) {
