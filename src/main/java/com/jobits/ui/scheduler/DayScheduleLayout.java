@@ -5,7 +5,6 @@ import com.jobits.ui.scheduler.components.AbstractResourceComponent;
 import java.awt.*;
 import java.time.Duration;
 import java.time.LocalTime;
-import java.time.Period;
 import java.util.*;
 import java.util.List;
 
@@ -160,26 +159,22 @@ public class DayScheduleLayout implements LayoutManager2 {
 
                     int column = resource == null ? -1 : _resources.indexOf(resource);
 
-                    if (column == -1) {
-                        // Give them to column 0 .... I can't think of something better to do
-                        //  at the moment.
-                        column = 0;
+                    if (column != -1) {
+                        int y = getY(time);
+                        int x = getX(column);
+
+                        int width = (int) _columnWidth;
+
+                        // Scale the height
+                        int height = (int) Math.ceil(_scale * (float) duration.getSeconds());
+
+                        appointmentComponent.setBounds(x, y, width, height);
+
+                        if (columns[column] == null) {
+                            columns[column] = new ArrayList<AbstractAppointmentComponent>();
+                        }
+                        columns[column].add(appointmentComponent);
                     }
-
-                    int y = getY(time);
-                    int x = getX(column);
-
-                    int width = (int) _columnWidth;
-
-                    // Scale the height
-                    int height = (int) Math.ceil(_scale * (float) duration.getSeconds());
-
-                    appointmentComponent.setBounds(x, y, width, height);
-
-                    if (columns[column] == null) {
-                        columns[column] = new ArrayList<AbstractAppointmentComponent>();
-                    }
-                    columns[column].add(appointmentComponent);
                 } else {
                     System.out.println("Don't know how to layout component: " + component);
                 }
