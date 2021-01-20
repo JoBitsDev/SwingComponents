@@ -548,7 +548,7 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
                 LocalDateTime dateTime = LocalDateTime.of(_date.getYear(), _date.getMonth(), _date.getDayOfMonth(),
                         time.getHour(), time.getMinute(), time.getSecond(), 0);
 
-                _scheduleListener.actionPerformed(resource, dateTime);
+                _scheduleListener.actionPerformed(resource, dateTime, e);
             }
         }
 

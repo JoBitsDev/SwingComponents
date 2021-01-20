@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.event.EventListenerList;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
@@ -46,7 +47,7 @@ public class Scheduler extends JPanel implements Printable {
 
         _daySchedule.setScheduleListener(new ScheduleListener() {
             @Override
-            public void actionPerformed(Resource resource, LocalDateTime time) {
+            public void actionPerformed(Resource resource, LocalDateTime time, MouseEvent e) {
                 // Guaranteed to return a non-null array
                 Object[] listeners = _listenerList.getListenerList();
                 // Process the listeners last to first, notifying
@@ -54,7 +55,7 @@ public class Scheduler extends JPanel implements Printable {
                 for (int i = listeners.length - 2; i >= 0; i -= 2) {
                     //noinspection ObjectEquality
                     if (listeners[i] == ScheduleListener.class) {
-                        ((ScheduleListener) listeners[i + 1]).actionPerformed(resource, time);
+                        ((ScheduleListener) listeners[i + 1]).actionPerformed(resource, time, e);
                     }
                 }
             }
