@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Iterator;
 
 /**
@@ -456,6 +457,12 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
                     graphics.drawLine(leftHeader, y, insets.left + width, y);
 
                     if (onTheHour) {
+                        LocalTime current = LocalTime.now();
+                        boolean onTheTime = time.getHour() == current.getHour() && time.getMinute() == current.getMinute();
+                        if (onTheTime) {
+                            graphics.setColor(Color.red);
+                            graphics.drawLine(leftHeader, y, insets.left + width, y);
+                        }
                         // We want to draw hour markers and right justify them.
 
                         String timeString = time.format(DateTimeFormatter.ofPattern("h:mm a"));
@@ -469,11 +476,33 @@ public class DaySchedule extends JPanel implements ResourceChangeListener, Appoi
                 }
             }
 
-            // Finally draw the column lines over everything
+            //  Finally draw the column lines over everything
             graphics.setColor(Color.black);
             for (int i = 0; i < columns; ++i) {
                 int x = layout.getX(i);
                 graphics.drawLine(x, insets.top, x, insets.top + height);
+            }
+            //  Drag a red line indicating te current time
+            for (LocalTime time = _startTime; time.compareTo(_endTime) < 0; time = time.plusMinutes(1)) {
+                Integer y = layout.getY(time);
+                if (y != null) {
+                    LocalTime current = LocalTime.now();
+                    boolean onTheTime = time.getHour() == current.getHour() && time.getMinute() == current.getMinute();
+                    if (onTheTime) {
+                        graphics.setColor(Color.red);
+                        graphics.drawLine(leftHeader, y, insets.left + width, y);
+                    }
+                    if (onTheTime) {
+                        // We want to draw hour markers and right justify them.
+                        String arrow = ">";
+
+                        Rectangle2D rect = fontMetrics.getStringBounds(arrow, graphics);
+                        int stringX = (int) (leftHeader - rect.getWidth());
+
+                        graphics.drawString(arrow, stringX, (y - 1) + fontHeight / 3);
+                        graphics.setColor(Color.lightGray);
+                    }
+                }
             }
 
             // Reset the graphics
