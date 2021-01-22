@@ -5,6 +5,8 @@
  */
 package com.jobits.ui.components;
 
+import com.jgoodies.binding.value.ValueModel;
+import com.jhw.swing.material.components.combobox.combobox_editable._MaterialComboBoxFiltrable;
 import com.jhw.swing.material.components.datepicker._JXDatePicker;
 import com.jhw.swing.material.components.labels._MaterialLabel;
 import com.jhw.swing.material.components.scrollpane._MaterialScrollPaneCore;
@@ -23,7 +25,9 @@ import com.jobits.ui.components.swing.containers.MaterialPanel;
 import com.jobits.ui.components.swing.containers.MaterialFrame;
 import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
+import com.jobits.ui.components.swing.displayers.Card;
 import com.jobits.ui.components.swing.displayers.MaterialComboBox;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -130,12 +134,44 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JLabel getH3Label() {
-            return new _MaterialLabel();
+            return new JLabel();
         }
 
         public static JList getList() {
             return new JXList();
 
+        }
+
+        public static Card getLongCard(
+                String imageURL,
+                String title,
+                String secondaryText,
+                String mediaURL,
+                String supportText,
+                Action mainButtonAction,
+                Action secundaryButtonAction,
+                ValueModel valueModelTitle,
+                ValueModel valueModelSecondaryText,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction, valueModelTitle, valueModelSecondaryText, menuActions);
+        }
+
+        public static Card getSmallCard(
+                String imageURL,
+                String title,
+                String secondaryText,
+                ValueModel valueModel,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, menuActions);
+        }
+
+        public static Card getSmallCardValueModel(
+                String imageURL,
+                String title,
+                String secondaryText,
+                ValueModel valueModel,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, valueModel, menuActions);
         }
 
     }
@@ -172,6 +208,9 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return picker;
         }
 
+        public static <T> JComboBox<T> getComboBoxEditable() {
+            return new _MaterialComboBoxFiltrable<T>();
+        }
     }
 
     public static class Containers {
@@ -215,12 +254,11 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 //        public static  getMaterialLooks() throws UnsupportedLookAndFeelException {
 //            return new ;
 //        }
-
         public static TabbedPaneUI getTabbedPaneUI() {
-           return new MaterialTabbedPaneUI();
+            return new MaterialTabbedPaneUI();
         }
 
-        public static LookAndFeel getLooks() throws UnsupportedLookAndFeelException{
+        public static LookAndFeel getLooks() throws UnsupportedLookAndFeelException {
             return new MaterialLookAndFeel();
         }
 

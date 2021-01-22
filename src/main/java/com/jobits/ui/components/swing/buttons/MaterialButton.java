@@ -15,7 +15,7 @@ import com.jhw.swing.util.Utils;
 public class MaterialButton extends _MaterialButton {
 
     public MaterialButton() {
-        setBackground(DefaultValues.PRIMARY_COLOR);
+        setBackground(DefaultValues.PRIMARY_COLOR_DARK);
         setForeground(Utils.getForegroundAccording(getBackground()));
     }
 

@@ -61,6 +61,7 @@ public class NotificationHandler implements NotificationChannel {
                 return Optional.empty();
             case INFO:
                 showMessage(text);
+                return Optional.empty();
             case WARNING:
                 return Optional.of(showConfirmDialog(text));
             case DIALOG_CONFIRM:
@@ -85,22 +86,12 @@ public class NotificationHandler implements NotificationChannel {
     protected String showInputDialog(String text) {
         String ret = JOptionPane.showInputDialog(KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow(),
                 text, "Entrada", JOptionPane.QUESTION_MESSAGE);
-        if (ret != null) {
-            return ret;
-        } else {
-            showMessage("Valores Incorrectos");
-            return null;
-        }
+        return ret;
     }
 
     protected String showInputDialog(Container view, String text, Object defaultValue) {
         String ret = JOptionPane.showInputDialog(view, text, defaultValue);
-        if (ret != null) {
-            return ret;
-        } else {
-            showMessage("Valores Incorrectos");
-            return null;
-        }
+        return ret;
     }
 
     protected Object showInputDialog(Container view, String msg, String title, Object[] selections, Object initialValue) {
@@ -108,12 +99,7 @@ public class NotificationHandler implements NotificationChannel {
                 JOptionPane.QUESTION_MESSAGE,
                 new javax.swing.ImageIcon(getClass().getResource("/restManager/resources/images/pregunta.png")),
                 selections, initialValue);
-        if (ret != null) {
-            return ret;
-        } else {
-            showMessage("Valores Incorrectos");
-            return null;
-        }
+        return ret;
     }
 
     private void showSuccessDialog(String text) {
