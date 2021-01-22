@@ -1,5 +1,6 @@
 package com.jobits.ui.scheduler;
 
+import java.awt.Color;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -45,5 +46,12 @@ public interface Appointment {
      * @return (not null) Formatted string description of the appointment
      */
     String getDescription();
+
+    /**
+     * Get the status color of the appointment on the given day.
+     *
+     * @return (not null) status color of the appointment
+     */
+    Color getColorStatus();
 
 }
