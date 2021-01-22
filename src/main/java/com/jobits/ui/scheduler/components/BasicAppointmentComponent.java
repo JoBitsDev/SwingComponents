@@ -29,6 +29,8 @@ public class BasicAppointmentComponent extends AbstractAppointmentComponent {
         // The preferred size is pretty much just ignored for right now.
         setPreferredSize(new Dimension(100, 100));
 
+        setToolTipText(appointment.getDescription());
+
         // Default our background color to blue
         setBackground(BackgroundColor);
     }
