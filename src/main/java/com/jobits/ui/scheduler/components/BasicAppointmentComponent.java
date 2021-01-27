@@ -16,7 +16,7 @@ import java.awt.*;
  */
 public class BasicAppointmentComponent extends AbstractAppointmentComponent {
 
-    protected static final Color BackgroundColor = new Color(9, 171, 246, 200);
+    protected static final Color BACKGROUND_COLOR = new Color(9, 171, 246, 200);
 
     /**
      * Constructor given an appointment to wrap.
@@ -29,8 +29,11 @@ public class BasicAppointmentComponent extends AbstractAppointmentComponent {
         // The preferred size is pretty much just ignored for right now.
         setPreferredSize(new Dimension(100, 100));
 
+        // Description of the appointment
+        setToolTipText(appointment.getDescription());
+
         // Default our background color to blue
-        setBackground(BackgroundColor);
+        setBackground(BACKGROUND_COLOR);
     }
 
     @Override
@@ -62,7 +65,13 @@ public class BasicAppointmentComponent extends AbstractAppointmentComponent {
 
         graphics.setColor(Color.black);
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.drawString(_appointment.getTitle(), insets.left + 10, insets.top + fontHeight + 2);
+        graphics.drawString(_appointment.getTitle(), insets.left + 20, insets.top + fontHeight + 2);
+
+        graphics.setColor(super._appointment.getColorStatus());
+        graphics.fillOval(insets.left + 3, insets.top + 3, 10, 10);
+
+        graphics.setColor(Color.black);
+        graphics.drawOval(insets.left + 3, insets.top + 3, 10, 10);
 
         graphics.setRenderingHints(renderHints);
         graphics.setColor(oldColor);
