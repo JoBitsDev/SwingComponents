@@ -60,6 +60,18 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 
     public static class Buttons {
 
+        public static JButton getMaterialButton() {
+            return new MaterialButton();
+        }
+
+        public static JButton getOutlinedButton() {
+            return new MaterialSecondaryButton();
+        }
+
+        public static JButton getLinedButton() {
+            return new MaterialSecondaryButton();
+        }
+
         public static JButton getCloseButton() {
             return new MaterialButton(MaterialIcons.CLOSE);
         }
@@ -72,49 +84,32 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             return new MaterialButton(MaterialIcons.EXPAND_LESS);
         }
 
-        public static JButton getMaterialButton() {
-            return new MaterialButton();
-
-        }
-
         public static JButton getBackButton() {
             return new MaterialSecondaryButton(MaterialIcons.ARROW_BACK);
-
         }
 
         public static JButton getEditButton() {
             return new MaterialSecondaryButton(MaterialIcons.UPDATE);
-
         }
 
         public static JButton getAcceptButton() {
             return new MaterialButton();
-
         }
 
         public static JButton getCancelButton() {
             return new MaterialSecondaryButton(MaterialIcons.REMOVE.deriveIcon(30f));
-
-        }
-
-        public static JButton getOutlinedButton() {
-            return new MaterialSecondaryButton();
-
         }
 
         public static JButton getIconButton(ImageIcon imageIcon) {
             return new MaterialIconButton(imageIcon);
-
         }
 
         public static JButton getMenuButton() {
             return new MaterialSecondaryButton(MaterialIcons.MENU.deriveIcon(30f));
-
         }
 
         public static JButton getAddButton() {
             return new MaterialSecondaryButton(MaterialIcons.ADD.deriveIcon(30f));
-
         }
 
     }
