@@ -54,4 +54,11 @@ public interface Appointment {
      */
     Color getColorStatus();
 
+    /**
+     * Get the check in status of the appointment on the given day.
+     *
+     * @return (not null) checkin status
+     */
+    boolean cheackIn();
+
 }
