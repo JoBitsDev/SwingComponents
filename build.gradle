@@ -4,8 +4,11 @@ apply plugin: 'maven'
 
 
 group = 'com.jobits.ui'
-version = '1.0.2'
+version = '1.0.3'
 
+jar{
+    archiveBaseName = 'com.jobits.ui'    
+}
 
 repositories {
     jcenter()
