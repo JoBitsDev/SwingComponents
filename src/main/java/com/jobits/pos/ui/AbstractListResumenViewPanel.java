@@ -3,6 +3,7 @@ package com.jobits.pos.ui;
 import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.list.SelectionInList;
 import com.jobits.pos.ui.presenters.AbstractListViewPresenter;
+import com.jobits.pos.ui.presenters.AbstractViewPresenter;
 import com.jobits.pos.ui.utils.BindableTableModel;
 import com.jobits.ui.components.MaterialComponentsFactory;
 import static com.jobits.pos.ui.viewmodel.AbstractResumenViewModel.*;
@@ -21,9 +22,10 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
     protected BindableTableModel<Detail> modelDetail;
     protected JToggleButton detailButton;
 
-    public AbstractListResumenViewPanel(AbstractListViewPresenter presenter, JToggleButton detailButton) {
+    public AbstractListResumenViewPanel(AbstractViewPresenter presenter, JToggleButton detailButton) {
         super(presenter);
         this.detailButton = detailButton;
+        Bindings.bind(detailButton, getPresenter().getModel(PROP_SELECTED_DETAIL));
     }
 
     @SuppressWarnings("unchecked")
@@ -176,8 +178,6 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
                 new SelectionInList(getPresenter().getModel(PROP_LISTADETAIL),
                         getPresenter().getModel(PROP_SELECTED_DETAIL)));
         Bindings.bind(jLabel1, getPresenter().getModel(PROP_TITULO_VISTA));
-        
-        Bindings.bind(detailButton, getPresenter().getModel(PROP_SELECTED_DETAIL));
 
     }
 
