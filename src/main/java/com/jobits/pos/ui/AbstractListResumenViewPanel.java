@@ -191,7 +191,7 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
         setBackground(DefaultValues.SECONDARY_COLOR_LIGHT);
 
         getPresenter().addBeanPropertyChangeListener(PROP_SELECTED_DETAIL, (PropertyChangeEvent evt) -> {
-            ((CardLayout) jPanelTabla.getLayout()).show(jPanelTabla, (boolean) evt.getNewValue() ? "main" : "detail");
+            ((CardLayout) jPanelTabla.getLayout()).show(jPanelTabla, (boolean) evt.getNewValue() ? "detail" : "main");
         });
     }
 
