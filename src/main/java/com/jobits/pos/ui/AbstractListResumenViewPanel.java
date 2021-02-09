@@ -2,30 +2,25 @@ package com.jobits.pos.ui;
 
 import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.list.SelectionInList;
-import com.jobits.pos.ui.presenters.AbstractListViewPresenter;
 import com.jobits.pos.ui.presenters.AbstractViewPresenter;
 import com.jobits.pos.ui.utils.BindableTableModel;
 import com.jobits.ui.components.MaterialComponentsFactory;
 import static com.jobits.pos.ui.viewmodel.AbstractResumenViewModel.*;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
-import javax.swing.JToggleButton;
 
 /**
  *
  * @author Jorge
- * @param <Main,Detail> tipo de dato del modelo
+ * @param <Main, Detail> tipo de dato del modelo
  */
 public abstract class AbstractListResumenViewPanel<Main, Detail> extends AbstractViewPanel {
 
     protected BindableTableModel<Main> modelMain;
     protected BindableTableModel<Detail> modelDetail;
-    protected JToggleButton detailButton;
 
-    public AbstractListResumenViewPanel(AbstractViewPresenter presenter, JToggleButton detailButton) {
+    public AbstractListResumenViewPanel(AbstractViewPresenter presenter) {
         super(presenter);
-        this.detailButton = detailButton;
-        Bindings.bind(detailButton, getPresenter().getModel(PROP_SELECTED_DETAIL));
     }
 
     @SuppressWarnings("unchecked")
@@ -35,6 +30,7 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
         jPopupMenuClickDerecho = new javax.swing.JPopupMenu();
         jPanelControlesSuperiores = new javax.swing.JPanel();
         jLabel1 = MaterialComponentsFactory.Displayers.getH3Label();
+        jToggleButtonDetail = new javax.swing.JToggleButton();
         jPanelTabla = MaterialComponentsFactory.Containers.getPrimaryPanel();
         jScrollPaneMain = new javax.swing.JScrollPane();
         jTableMain = new javax.swing.JTable();
@@ -55,6 +51,12 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Nombre Tabla");
         jPanelControlesSuperiores.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jToggleButtonDetail.setText("Detalles");
+        jToggleButtonDetail.setMaximumSize(new java.awt.Dimension(150, 32));
+        jToggleButtonDetail.setMinimumSize(new java.awt.Dimension(150, 32));
+        jToggleButtonDetail.setPreferredSize(new java.awt.Dimension(150, 32));
+        jPanelControlesSuperiores.add(jToggleButtonDetail, java.awt.BorderLayout.EAST);
 
         add(jPanelControlesSuperiores, java.awt.BorderLayout.NORTH);
 
@@ -164,6 +166,7 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
     protected javax.swing.JScrollPane jScrollPaneMain;
     protected javax.swing.JTable jTableDetail;
     protected javax.swing.JTable jTableMain;
+    protected javax.swing.JToggleButton jToggleButtonDetail;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -179,6 +182,8 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
                         getPresenter().getModel(PROP_SELECTED_DETAIL)));
         Bindings.bind(jLabel1, getPresenter().getModel(PROP_TITULO_VISTA));
 
+        Bindings.bind(jToggleButtonDetail, getPresenter().getModel(PROP_DETAILSELECTED));
+
     }
 
     @Override
@@ -190,7 +195,7 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
         jTableDetail.setModel(modelDetail);
         setBackground(DefaultValues.SECONDARY_COLOR_LIGHT);
 
-        getPresenter().addBeanPropertyChangeListener(PROP_SELECTED_DETAIL, (PropertyChangeEvent evt) -> {
+        getPresenter().addBeanPropertyChangeListener(PROP_DETAILSELECTED, (PropertyChangeEvent evt) -> {
             ((CardLayout) jPanelTabla.getLayout()).show(jPanelTabla, (boolean) evt.getNewValue() ? "detail" : "main");
         });
     }
