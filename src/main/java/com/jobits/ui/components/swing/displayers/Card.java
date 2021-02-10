@@ -27,8 +27,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import com.jhw.swing.material.standars.MaterialIcons;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.border.Border;
 
 /**
  *
@@ -257,6 +259,10 @@ public class Card extends javax.swing.JPanel {
 
     public void setSecondaryTextColor(Color color) {
         jLabelSecondaryText.setForeground(color);
+    }
+
+    public void setSecondaryTextFont(Font font) {
+        jLabelSecondaryText.setFont(font);
     }
 
     private void setComponentsInfo() {
