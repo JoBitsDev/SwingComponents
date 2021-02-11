@@ -147,8 +147,9 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
                 Action secundaryButtonAction,
                 ValueModel valueModelTitle,
                 ValueModel valueModelSecondaryText,
+                ValueModel valueModelImageIcon,
                 Action... menuActions) {
-            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction, valueModelTitle, valueModelSecondaryText, menuActions);
+            return new Card(imageURL, title, secondaryText, mediaURL, supportText, mainButtonAction, secundaryButtonAction, valueModelTitle, valueModelSecondaryText, valueModelImageIcon, menuActions);
         }
 
         public static Card getSmallCard(
@@ -167,6 +168,16 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
                 ValueModel valueModel,
                 Action... menuActions) {
             return new Card(imageURL, title, secondaryText, valueModel, menuActions);
+        }
+
+        public static Card getSmallCardImageValueModel(
+                String imageURL,
+                String title,
+                String secondaryText,
+                ValueModel valueModel,
+                ValueModel valueModelIcon,
+                Action... menuActions) {
+            return new Card(imageURL, title, secondaryText, valueModel, valueModelIcon, menuActions);
         }
 
     }

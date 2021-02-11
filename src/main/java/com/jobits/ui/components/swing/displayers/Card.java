@@ -27,8 +27,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import com.jhw.swing.material.standars.MaterialIcons;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.border.Border;
 
 /**
  *
@@ -38,7 +40,7 @@ public class Card extends javax.swing.JPanel {
 
     String imageURL, title, secondaryText, mediaURL, supportText;
     Action mainButtonAction, secundaryButtonAction;
-    ValueModel valueModelTitle, valueModelSecundaryText;
+    ValueModel valueModelTitle, valueModelSecundaryText, valueModelimageIcon;
     List<Action> menuActionsList = new ArrayList<>();
 
     /**
@@ -53,6 +55,7 @@ public class Card extends javax.swing.JPanel {
      * @param secundaryButtonAction
      * @param valueModelTitle
      * @param valueModelSecundaryText
+     * @param valueModelimageIcon
      * @param menuActions
      */
     public Card(
@@ -65,6 +68,7 @@ public class Card extends javax.swing.JPanel {
             Action secundaryButtonAction,
             ValueModel valueModelTitle,
             ValueModel valueModelSecundaryText,
+            ValueModel valueModelimageIcon,
             Action... menuActions) {
         this.imageURL = imageURL;
         this.title = title;
@@ -75,6 +79,7 @@ public class Card extends javax.swing.JPanel {
         this.secundaryButtonAction = secundaryButtonAction;
         this.valueModelTitle = valueModelTitle;
         this.valueModelSecundaryText = valueModelSecundaryText;
+        this.valueModelimageIcon = valueModelimageIcon;
         if (menuActions != null) {
             for (Action menuAction : menuActions) {
                 menuActionsList.add(menuAction);
@@ -93,7 +98,17 @@ public class Card extends javax.swing.JPanel {
             ValueModel valueModel,
             Action... menuActions) {
 
-        this(imageURL, title, secondaryText, null, null, null, null, valueModel, null, menuActions);
+        this(imageURL, title, secondaryText, null, null, null, null, valueModel, null, null, menuActions);
+    }
+
+    public Card(String imageURL,
+            String title,
+            String secondaryText,
+            ValueModel valueModel,
+            ValueModel valueModelImage,
+            Action... menuActions) {
+
+        this(imageURL, title, secondaryText, null, null, null, null, valueModel, null, valueModelImage, menuActions);
     }
 
     public Card(String imageURL,
@@ -101,7 +116,7 @@ public class Card extends javax.swing.JPanel {
             String secondaryText,
             Action... menuActions) {
 
-        this(imageURL, title, secondaryText, null, null, null, null, null, null, menuActions);
+        this(imageURL, title, secondaryText, null, null, null, null, null, null, null, menuActions);
     }
 
     /**
@@ -259,12 +274,23 @@ public class Card extends javax.swing.JPanel {
         jLabelSecondaryText.setForeground(color);
     }
 
-    private void setComponentsInfo() {
+    public void setSecondaryTextFont(Font font) {
+        jLabelSecondaryText.setFont(font);
+    }
 
-        if (imageURL == null) {
+    public JLabel getjLabelIcon() {
+        return jLabelIcon;
+    }
+
+    private void setComponentsInfo() {
+        if (imageURL == null && valueModelimageIcon == null) {
             jLabelIcon.setVisible(false);
-        } else {
+        } else if (imageURL != null) {
+            jLabelIcon.setText(null);
             jLabelIcon.setIcon(circlarShape(imageURL));
+        } else if (valueModelimageIcon != null) {
+            jLabelIcon.setText(null);
+            Bindings.bind(jLabelIcon, "icon", valueModelimageIcon);
         }
         if (title == null && valueModelTitle == null) {
             jLabelCardTitle.setVisible(false);
