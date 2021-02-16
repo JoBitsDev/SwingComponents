@@ -4,8 +4,9 @@ import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.list.SelectionInList;
 import com.jobits.pos.ui.presenters.AbstractViewPresenter;
 import com.jobits.pos.ui.utils.BindableTableModel;
-import com.jobits.ui.components.MaterialComponentsFactory;
+import static com.jobits.pos.ui.viewmodel.AbstractListViewModel.PROP_TITULO_VISTA;
 import static com.jobits.pos.ui.viewmodel.AbstractResumenViewModel.*;
+import com.jobits.ui.components.MaterialComponentsFactory;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
 
@@ -34,6 +35,7 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
         jPanelTabla = MaterialComponentsFactory.Containers.getPrimaryPanel();
         jScrollPaneMain = new javax.swing.JScrollPane();
         jTableMain = new javax.swing.JTable();
+        jPanelDetailPanel = new javax.swing.JPanel();
         jScrollPaneDetail = new javax.swing.JScrollPane();
         jTableDetail = new javax.swing.JTable();
 
@@ -97,6 +99,8 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
 
         jPanelTabla.add(jScrollPaneMain, "main");
 
+        jPanelDetailPanel.setLayout(new java.awt.BorderLayout());
+
         jScrollPaneDetail.setBorder(null);
 
         jTableDetail.setAutoCreateRowSorter(true);
@@ -127,7 +131,9 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
         jScrollPaneDetail.setViewportView(jTableDetail);
         jTableDetail.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jPanelTabla.add(jScrollPaneDetail, "detail");
+        jPanelDetailPanel.add(jScrollPaneDetail, java.awt.BorderLayout.CENTER);
+
+        jPanelTabla.add(jPanelDetailPanel, "detail");
 
         add(jPanelTabla, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +166,7 @@ public abstract class AbstractListResumenViewPanel<Main, Detail> extends Abstrac
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JLabel jLabel1;
     protected javax.swing.JPanel jPanelControlesSuperiores;
+    protected javax.swing.JPanel jPanelDetailPanel;
     protected javax.swing.JPanel jPanelTabla;
     protected javax.swing.JPopupMenu jPopupMenuClickDerecho;
     protected javax.swing.JScrollPane jScrollPaneDetail;
