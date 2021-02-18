@@ -48,7 +48,7 @@ public class CollapseMenu extends JPanel {
     }
 
     /**
-     * @deprecated no usar porque no funciona muy bien con el popup
+     * @Deprecated no usar porque no funciona muy bien con el popup
      * @param item
      */
     public void addMenuItem(Component item) {
