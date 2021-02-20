@@ -5,11 +5,11 @@
  */
 package com.jobits.pos.ui;
 
+import com.root101.swing.material.standards.MaterialColors;
+import com.root101.swing.material.standards.MaterialFontRoboto;
 import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import com.jhw.swing.material.standars.MaterialColors;
-import com.jhw.swing.material.standars.MaterialFontRoboto;
 import java.awt.Font;
 
 /**

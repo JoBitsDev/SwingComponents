@@ -2,22 +2,17 @@ package com.jobits.pos.ui;
 
 import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.list.SelectionInList;
-import com.jidesoft.swing.CheckBoxListSelectionModel;
-import java.util.List;
 import com.jobits.pos.ui.presenters.AbstractListViewPresenter;
 import com.jobits.pos.ui.utils.BindableTableModel;
-import com.jobits.pos.ui.viewmodel.AbstractListViewModel;
 import com.jobits.ui.components.MaterialComponentsFactory;
-import com.jhw.swing.material.standars.MaterialIcons;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import javax.swing.ListSelectionModel;
 import org.jdesktop.swingx.JXPanel;
 import static com.jobits.pos.ui.viewmodel.AbstractListViewModel.*;
+import com.root101.swing.material.standards.MaterialIcons;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import org.jdesktop.swingx.JXTable;
 
 /**
  *
