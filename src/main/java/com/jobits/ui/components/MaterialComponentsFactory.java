@@ -6,15 +6,6 @@
 package com.jobits.ui.components;
 
 import com.jgoodies.binding.value.ValueModel;
-import com.jhw.swing.material.components.combobox.combobox_editable._MaterialComboBoxFiltrable;
-import com.jhw.swing.material.components.datepicker._JXDatePicker;
-import com.jhw.swing.material.components.labels._MaterialLabel;
-import com.jhw.swing.material.components.scrollpane._MaterialScrollPaneCore;
-import com.jhw.swing.material.components.textfield.validated._MaterialTextFieldMoneyPositive;
-import com.jhw.swing.material.standars.MaterialColors;
-import com.jhw.swing.material.standars.MaterialIcons;
-import com.jhw.swing.ui.MaterialLookAndFeel;
-import com.jhw.swing.ui.componentsui.tabbedpane.MaterialTabbedPaneUI;
 import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.components.swing.input.MaterialPasswordField;
 import com.jobits.ui.components.swing.input.MaterialTextField;
@@ -26,7 +17,17 @@ import com.jobits.ui.components.swing.containers.MaterialFrame;
 import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
 import com.jobits.ui.components.swing.displayers.Card;
-import com.jobits.ui.components.swing.displayers.MaterialComboBox;
+import com.root101.swing.material.components.combobox.MaterialComboBoxFactory;
+import com.root101.swing.material.components.datepicker.MaterialDatePicker;
+import com.root101.swing.material.components.datepicker.MaterialDatePickersFactory;
+import com.root101.swing.material.components.scrollpane._MaterialScrollPaneCore;
+import com.root101.swing.material.components.textfield.MaterialFormatedTextField;
+import com.root101.swing.material.components.textfield.MaterialTextFactory;
+import com.root101.swing.material.standards.MaterialColors;
+import com.root101.swing.material.standards.MaterialIcons;
+import com.root101.swing.ui.MaterialLookAndFeel;
+import com.root101.swing.ui.componentsui.tabbedpane.MaterialTabbedPaneUI;
+import com.root101.utils.formateer.MoneyFormateer;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -41,10 +42,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 import javax.swing.LookAndFeel;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.TabbedPaneUI;
 import org.jdesktop.swingx.JXDatePicker;
 import org.jdesktop.swingx.JXList;
@@ -69,7 +68,7 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JButton getLinedButton() {
-            return new MaterialSecondaryButton();
+            return new MaterialSecondaryButton(true);
         }
 
         public static JButton getCloseButton() {
@@ -197,7 +196,7 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JTextField getTextFielPrecioVenta(String hint, String title, String coin) {
-            _MaterialTextFieldMoneyPositive textField = new _MaterialTextFieldMoneyPositive();
+            MaterialFormatedTextField textField = MaterialTextFactory.buildFormatedRuntime(new MoneyFormateer());
             textField.setHint(hint);
             textField.setLabel(title);
             textField.setExtra(coin);
@@ -209,13 +208,13 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JXDatePicker getDatePicker() {
-            _JXDatePicker picker = new _JXDatePicker();
+            MaterialDatePicker picker = MaterialDatePickersFactory.build();
             picker.setBackground(DefaultValues.SECONDARY_COLOR_LIGHT);
             return picker;
         }
 
         public static <T> JComboBox<T> getComboBoxEditable() {
-            return new _MaterialComboBoxFiltrable<T>();
+            return MaterialComboBoxFactory.buildFiltrable();
         }
     }
 

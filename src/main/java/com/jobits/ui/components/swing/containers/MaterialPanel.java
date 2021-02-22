@@ -1,9 +1,7 @@
 package com.jobits.ui.components.swing.containers;
 
-import com.jhw.swing.material.components.container.panel._MaterialPanel;
-import com.jobits.ui.utils.MaterialColor;
+import com.root101.swing.material.components.container.panel._MaterialPanel;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -36,11 +34,11 @@ public class MaterialPanel extends _MaterialPanel {
      */
     public MaterialPanel(Color backgroundColor) {
         setBackground(backgroundColor);
-        setElevation(0);
+        setElevationLevel(0);
     }
 
     public MaterialPanel() {
-        setElevation(0);
+        setElevationLevel(0);
     }
 
 }

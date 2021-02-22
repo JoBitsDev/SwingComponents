@@ -6,12 +6,11 @@
 package com.jobits.ui.components.swing.notifications;
 
 import com.jobits.pos.notification.TipoNotificacion;
-import com.jhw.swing.notification.toast.TOAST;
-import com.jhw.swing.notification.toast.types.notification.DialogNotificationToastGeneral;
-import com.jhw.swing.material.standars.MaterialColors;
-import com.jhw.swing.material.standars.MaterialIcons;
 import com.jobits.pos.notification.NotificationChannel;
-import java.awt.Color;
+import com.jobits.pos.ui.DefaultValues;
+import com.root101.swing.material.standards.MaterialColors;
+import com.root101.swing.notification.NotificationBuilder;
+import com.root101.swing.notification.NotificationFactory;
 import java.awt.Container;
 import java.awt.KeyboardFocusManager;
 import java.util.Optional;
@@ -30,23 +29,26 @@ public class NotificationHandler implements NotificationChannel {
 
     @Override
     public void notify(String text, TipoNotificacion severidad) {
+        NotificationBuilder.builder b = NotificationBuilder.builder().text(text);
+
         switch (severidad) {
             case INFO:
-                TOAST.makeNotificationInfo(text);
+                b.color(DefaultValues.PRIMARY_COLOR_LIGHT);
                 break;
             case ERROR:
-                TOAST.makeNotificationFAIL(text);
+                b.color(MaterialColors.REDA_700);
                 break;
             case SUCCESS:
-                TOAST.makeNotificationOK(text);
+                b.color(MaterialColors.GREENA_700);
                 break;
             case WARNING:
-                new DialogNotificationToastGeneral(3, text, MaterialIcons.WARNING, MaterialColors.AMBERA_400);
+                b.color(MaterialColors.YELLOWA_700);
                 break;
             default:
                 throw new IllegalArgumentException("Bad call with " + severidad + " to notify");
 
         }
+        NotificationFactory.buildNotificationTOAST(b);
 
     }
 

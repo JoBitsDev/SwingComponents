@@ -5,10 +5,10 @@
  */
 package com.jobits.ui.components.swing.buttons;
 
-import com.jhw.swing.material.components.button._MaterialButton;
-import com.jhw.swing.material.standars.MaterialColors;
-import com.jhw.swing.util.icons.icon_ttf.IconTTF;
 import com.jobits.pos.ui.DefaultValues;
+import com.root101.swing.derivable_icons.DerivableIcon;
+import com.root101.swing.material.components.button._MaterialButton;
+import com.root101.swing.material.standards.MaterialColors;
 import javax.swing.Icon;
 import javax.swing.border.LineBorder;
 
@@ -22,16 +22,23 @@ import javax.swing.border.LineBorder;
 public class MaterialSecondaryButton extends _MaterialButton {
 
     public MaterialSecondaryButton() {
-        
+        setBackground(MaterialColors.TRANSPARENT);
+        setForeground(DefaultValues.PRIMARY_COLOR);
+        setBorder(new LineBorder(getForeground(), DefaultValues.BORDER_LINE_THICK));
+
+    }
+    public MaterialSecondaryButton(boolean linedBorder) {
         setBackground(MaterialColors.TRANSPARENT);
         setForeground(DefaultValues.PRIMARY_COLOR);
         setBorder(new LineBorder(getForeground(), DefaultValues.BORDER_LINE_THICK));
 
     }
 
+    
+    
     public MaterialSecondaryButton(Icon icon) {
         this();
-        setIcon(((IconTTF)icon).deriveIcon(getForeground()));
+        setIcon(((DerivableIcon)icon).deriveIcon(getForeground()));
     }
 
 

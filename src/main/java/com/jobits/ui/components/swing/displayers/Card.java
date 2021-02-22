@@ -7,9 +7,7 @@ package com.jobits.ui.components.swing.displayers;
 
 import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.value.ValueModel;
-import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.components.MaterialComponentsFactory;
-import com.jobits.ui.components.swing.containers.CollapseMenu;
 import com.jobits.ui.components.swing.containers.TaskButton;
 import java.awt.AlphaComposite;
 import java.awt.Component;
@@ -23,14 +21,12 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import com.jhw.swing.material.standars.MaterialIcons;
+import com.root101.swing.material.standards.MaterialIcons;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.border.Border;
 
 /**
  *
