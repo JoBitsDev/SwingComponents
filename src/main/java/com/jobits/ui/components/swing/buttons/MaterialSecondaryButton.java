@@ -25,21 +25,18 @@ public class MaterialSecondaryButton extends _MaterialButton {
         setBackground(MaterialColors.TRANSPARENT);
         setForeground(DefaultValues.PRIMARY_COLOR);
         setBorder(new LineBorder(getForeground(), DefaultValues.BORDER_LINE_THICK));
-
     }
+
     public MaterialSecondaryButton(boolean linedBorder) {
         setBackground(MaterialColors.TRANSPARENT);
         setForeground(DefaultValues.PRIMARY_COLOR);
-        setBorder(new LineBorder(getForeground(), DefaultValues.BORDER_LINE_THICK));
-
+        setBorderColor(linedBorder ? getForeground() : getBackground());
+        setBorderThickness(DefaultValues.BORDER_LINE_THICK);
     }
 
-    
-    
     public MaterialSecondaryButton(Icon icon) {
         this();
-        setIcon(((DerivableIcon)icon).deriveIcon(getForeground()));
+        setIcon(((DerivableIcon) icon).deriveIcon(getForeground()));
     }
-
 
 }
