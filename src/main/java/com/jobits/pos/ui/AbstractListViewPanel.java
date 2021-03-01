@@ -39,30 +39,33 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
     private void initComponents() {
 
         jPopupMenuClickDerecho = new javax.swing.JPopupMenu();
-        jPanelControlesSuperiores = new javax.swing.JPanel();
+        jPanel2 = MaterialComponentsFactory.Containers.getSecondaryPanel();
+        jPanelControlesSuperiores = MaterialComponentsFactory.Containers.getTransparentPanel();
         jLabel1 = MaterialComponentsFactory.Displayers.getH3Label();
         jPanelTabla = MaterialComponentsFactory.Containers.getPrimaryPanel();
-        jPanelHeader = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelHeader = MaterialComponentsFactory.Containers.getTransparentPanel();
+        jPanel1 = MaterialComponentsFactory.Containers.getTransparentPanel();
         jTextFieldBusqueda = MaterialComponentsFactory.Input.getTextField("Buscar...", "");
         jLabel2 = new javax.swing.JLabel();
-        jXPanelControles = new org.jdesktop.swingx.JXPanel();
-        jButtonDelete = MaterialComponentsFactory.Buttons.getOutlinedButton();
-        jButtonEdit = MaterialComponentsFactory.Buttons.getOutlinedButton();
+        jPanelControles = MaterialComponentsFactory.Containers.getTransparentPanel();
+        jButtonDelete = MaterialComponentsFactory.Buttons.getLinedButton();
+        jButtonEdit = MaterialComponentsFactory.Buttons.getLinedButton();
         jButtonAdd = MaterialComponentsFactory.Buttons.getMaterialButton();
-        jPanelExtra = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanelExtra = MaterialComponentsFactory.Containers.getTransparentPanel();
+        jScrollPane1 = MaterialComponentsFactory.Containers.getScrollPane();
         jTableList = new javax.swing.JTable();
         jLabelCantidad = new javax.swing.JLabel();
 
         jPopupMenuClickDerecho.setInvoker(jTableList);
 
-        setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 5, 15));
         setMinimumSize(getMinimumSize());
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
 
-        jPanelControlesSuperiores.setOpaque(false);
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 0, 5, 0));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jPanelControlesSuperiores.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         jPanelControlesSuperiores.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -70,14 +73,11 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jLabel1.setText("Nombre Tabla");
         jPanelControlesSuperiores.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        add(jPanelControlesSuperiores, java.awt.BorderLayout.NORTH);
+        jPanel2.add(jPanelControlesSuperiores, java.awt.BorderLayout.NORTH);
 
         jPanelTabla.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        jPanelTabla.setOpaque(false);
         jPanelTabla.setLayout(new java.awt.BorderLayout());
 
-        jPanelHeader.setBackground(new java.awt.Color(204, 204, 204));
-        jPanelHeader.setOpaque(false);
         jPanelHeader.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setOpaque(false);
@@ -100,9 +100,7 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel1.add(jLabel2, java.awt.BorderLayout.LINE_END);
 
-        jXPanelControles.setBackground(new java.awt.Color(204, 204, 204));
-        jXPanelControles.setOpaque(false);
-        jXPanelControles.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanelControles.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         jButtonDelete.setMnemonic('d');
         jButtonDelete.setText("Eliminar");
@@ -112,7 +110,7 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jXPanelControles.add(jButtonDelete);
+        jPanelControles.add(jButtonDelete);
 
         jButtonEdit.setMnemonic('e');
         jButtonEdit.setText("Editar");
@@ -122,7 +120,7 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
                 jButtonEditActionPerformed(evt);
             }
         });
-        jXPanelControles.add(jButtonEdit);
+        jPanelControles.add(jButtonEdit);
 
         jButtonAdd.setMnemonic('a');
         jButtonAdd.setText("Agregar");
@@ -134,9 +132,9 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
                 jButtonAddActionPerformed(evt);
             }
         });
-        jXPanelControles.add(jButtonAdd);
+        jPanelControles.add(jButtonAdd);
 
-        jPanel1.add(jXPanelControles, java.awt.BorderLayout.PAGE_END);
+        jPanel1.add(jPanelControles, java.awt.BorderLayout.SOUTH);
 
         jPanelHeader.add(jPanel1, java.awt.BorderLayout.NORTH);
 
@@ -162,7 +160,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jTableList.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         jTableList.setRowHeight(25);
         jTableList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableList.setShowGrid(false);
         jTableList.getTableHeader().setReorderingAllowed(false);
         jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -185,7 +182,9 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jLabelCantidad.setText("xx Elementos");
         jPanelTabla.add(jLabelCantidad, java.awt.BorderLayout.PAGE_END);
 
-        add(jPanelTabla, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jPanelTabla, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
@@ -227,6 +226,8 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
     protected javax.swing.JLabel jLabel2;
     protected javax.swing.JLabel jLabelCantidad;
     protected javax.swing.JPanel jPanel1;
+    protected javax.swing.JPanel jPanel2;
+    protected javax.swing.JPanel jPanelControles;
     protected javax.swing.JPanel jPanelControlesSuperiores;
     protected javax.swing.JPanel jPanelExtra;
     protected javax.swing.JPanel jPanelHeader;
@@ -235,7 +236,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
     protected javax.swing.JScrollPane jScrollPane1;
     protected javax.swing.JTable jTableList;
     protected javax.swing.JTextField jTextFieldBusqueda;
-    protected org.jdesktop.swingx.JXPanel jXPanelControles;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -289,8 +289,8 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         return jPanelExtra;
     }
 
-    public JXPanel getjXPanelControles() {
-        return jXPanelControles;
+    public JPanel getjPanelControles() {
+        return jPanelControles;
     }
 
 }
