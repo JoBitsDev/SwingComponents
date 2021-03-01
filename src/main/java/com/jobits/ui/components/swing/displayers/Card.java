@@ -189,7 +189,7 @@ public class Card extends javax.swing.JPanel {
         jPanelMenu.setToolTipText(null);
         jPanelMenu.setMaximumSize(new java.awt.Dimension(20, 20));
         jPanelMenu.setPreferredSize(new java.awt.Dimension(20, 20));
-        jPanelMenu.setLayout(new java.awt.GridLayout(1, 1));
+        jPanelMenu.setLayout(new java.awt.GridLayout(2, 1));
 
         jButtonMenu.setBackground(jPanelHeader.getBackground());
         jButtonMenu.setForeground(jPanelHeader.getBackground());
