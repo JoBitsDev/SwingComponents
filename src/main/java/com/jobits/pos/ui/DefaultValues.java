@@ -5,11 +5,11 @@
  */
 package com.jobits.pos.ui;
 
+import com.root101.swing.material.standards.MaterialColors;
+import com.root101.swing.material.standards.MaterialFontRoboto;
 import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import com.jhw.swing.material.standars.MaterialColors;
-import com.jhw.swing.material.standars.MaterialFontRoboto;
 import java.awt.Font;
 
 /**
@@ -28,10 +28,13 @@ public class DefaultValues {
     public static Color SECONDARY_COLOR_LIGHT = MaterialColors.GREY_200;
     public static Color SECONDARY_COLOR = MaterialColors.GREY_300;
     public static Color SECONDARY_DARK = MaterialColors.GREY_400;
+    
+    public static Color TRANSPARENT = MaterialColors.TRANSPARENT;
+    public static Color WHITE = MaterialColors.WHITE;
 
     public static Font DEFAULT_FONT = MaterialFontRoboto.REGULAR;
 
-    public static int BORDER_LINE_THICK = 3;
+    public static int BORDER_LINE_THICK = 2;
 
     public static Border LINE_BORDER = new LineBorder(PRIMARY_COLOR, BORDER_LINE_THICK, true);
 

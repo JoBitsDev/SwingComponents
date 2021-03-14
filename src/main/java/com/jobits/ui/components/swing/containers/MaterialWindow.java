@@ -1,6 +1,5 @@
 package com.jobits.ui.components.swing.containers;
 
-import com.jhw.swing.material.standars.MaterialShadow;
 import com.jobits.ui.utils.MaterialColor;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -9,6 +8,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
 import com.jobits.ui.utils.Utils2;
+import com.root101.swing.material.standards.MaterialShadow;
 
 /**
  * A {@code MaterialWindow} is the prefered top-level container for your

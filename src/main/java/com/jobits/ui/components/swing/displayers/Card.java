@@ -7,9 +7,7 @@ package com.jobits.ui.components.swing.displayers;
 
 import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.value.ValueModel;
-import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.components.MaterialComponentsFactory;
-import com.jobits.ui.components.swing.containers.CollapseMenu;
 import com.jobits.ui.components.swing.containers.TaskButton;
 import java.awt.AlphaComposite;
 import java.awt.Component;
@@ -23,14 +21,12 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import com.jhw.swing.material.standars.MaterialIcons;
+import com.root101.swing.material.standards.MaterialIcons;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.border.Border;
 
 /**
  *
@@ -128,26 +124,28 @@ public class Card extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelHeader = new javax.swing.JPanel();
+        jPanel1 = MaterialComponentsFactory.Containers.getSecondaryPanel();
+        jPanelHeader = MaterialComponentsFactory.Containers.getTransparentPanel();
         jLabelIcon = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = MaterialComponentsFactory.Containers.getTransparentPanel();
         jLabelCardTitle = MaterialComponentsFactory.Displayers.getH3Label();
         jLabelSecondaryText = MaterialComponentsFactory.Displayers.getLabel();
-        jPanelMenu = new javax.swing.JPanel();
+        jPanelMenu = MaterialComponentsFactory.Containers.getTransparentPanel();
         jButtonMenu = new javax.swing.JButton();
-        jPanelMedia = new javax.swing.JPanel();
+        jPanelMedia = MaterialComponentsFactory.Containers.getTransparentPanel();
         jLabelMedia = new javax.swing.JLabel();
-        jPanelSupportText = new javax.swing.JPanel();
+        jPanelSupportText = MaterialComponentsFactory.Containers.getTransparentPanel();
         jLabelSupportText = new javax.swing.JLabel();
-        jPanelActionButtons = new javax.swing.JPanel();
-        jButtonSecondary = MaterialComponentsFactory.Buttons.getOutlinedButton();
+        jPanelActionButtons = MaterialComponentsFactory.Containers.getTransparentPanel();
+        jButtonSecondary = MaterialComponentsFactory.Buttons.getLinedButton();
         jButtonPrimary = MaterialComponentsFactory.Buttons.getMaterialButton();
 
-        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
         setToolTipText(null);
         setMaximumSize(new java.awt.Dimension(32773, 500));
         setMinimumSize(new java.awt.Dimension(256, 55));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanelHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelHeader.setToolTipText(null);
@@ -210,7 +208,7 @@ public class Card extends javax.swing.JPanel {
 
         jPanelHeader.add(jPanelMenu, java.awt.BorderLayout.EAST);
 
-        add(jPanelHeader);
+        jPanel1.add(jPanelHeader);
 
         jPanelMedia.setToolTipText(null);
         jPanelMedia.setMinimumSize(new java.awt.Dimension(0, 200));
@@ -220,7 +218,7 @@ public class Card extends javax.swing.JPanel {
         jLabelMedia.setToolTipText(null);
         jPanelMedia.add(jLabelMedia);
 
-        add(jPanelMedia);
+        jPanel1.add(jPanelMedia);
 
         jPanelSupportText.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelSupportText.setToolTipText(null);
@@ -231,7 +229,7 @@ public class Card extends javax.swing.JPanel {
         jLabelSupportText.setToolTipText(null);
         jPanelSupportText.add(jLabelSupportText);
 
-        add(jPanelSupportText);
+        jPanel1.add(jPanelSupportText);
 
         jPanelActionButtons.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelActionButtons.setToolTipText(null);
@@ -247,7 +245,9 @@ public class Card extends javax.swing.JPanel {
         jButtonPrimary.setToolTipText(null);
         jPanelActionButtons.add(jButtonPrimary);
 
-        add(jPanelActionButtons);
+        jPanel1.add(jPanelActionButtons);
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
@@ -361,6 +361,7 @@ public class Card extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelMedia;
     private javax.swing.JLabel jLabelSecondaryText;
     private javax.swing.JLabel jLabelSupportText;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelActionButtons;
     private javax.swing.JPanel jPanelHeader;

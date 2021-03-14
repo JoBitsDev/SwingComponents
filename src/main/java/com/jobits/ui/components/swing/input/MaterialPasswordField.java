@@ -1,6 +1,6 @@
 package com.jobits.ui.components.swing.input;
 
-import com.jhw.swing.material.components.passwordfield._MaterialPasswordField;
+import com.root101.swing.material.components.passwordfield._MaterialPasswordField;
 
 
 /**

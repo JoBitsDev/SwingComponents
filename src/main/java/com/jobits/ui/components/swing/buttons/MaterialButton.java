@@ -1,11 +1,11 @@
 package com.jobits.ui.components.swing.buttons;
 
-import com.jhw.swing.material.components.button._MaterialButton;
-import com.jhw.swing.util.icons.icon_ttf.IconTTF;
 import com.jobits.pos.ui.DefaultValues;
+import com.root101.swing.derivable_icons.DerivableIcon;
+import com.root101.swing.material.components.button._MaterialButton;
+import com.root101.swing.util.Utils;
 import java.awt.Color;
 import javax.swing.Icon;
-import com.jhw.swing.util.Utils;
 
 /**
  * A Material Design button.
@@ -19,14 +19,14 @@ public class MaterialButton extends _MaterialButton {
         setForeground(Utils.getForegroundAccording(getBackground()));
     }
 
-    public MaterialButton(Icon icon) {
+    public MaterialButton(DerivableIcon icon) {
         this();
         setText("");
-        setIcon(((IconTTF)icon).deriveIcon(getForeground()));
+        setIcon(((DerivableIcon) icon).deriveIcon(getForeground()));
         setSize(40, 40);
     }
 
-    public MaterialButton(Icon icon, Color color) {
+    public MaterialButton(DerivableIcon icon, Color color) {
         this(icon);
         setBackground(color);
     }

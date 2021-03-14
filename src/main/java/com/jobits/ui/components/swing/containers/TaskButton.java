@@ -5,15 +5,10 @@
  */
 package com.jobits.ui.components.swing.containers;
 
-import com.jhw.swing.material.standars.MaterialColors;
 import com.jobits.pos.ui.DefaultValues;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import com.root101.swing.material.standards.MaterialColors;
 import javax.swing.Action;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 /**

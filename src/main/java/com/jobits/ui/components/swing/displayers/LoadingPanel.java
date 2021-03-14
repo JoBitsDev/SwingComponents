@@ -5,10 +5,9 @@
  */
 package com.jobits.ui.components.swing.displayers;
 
-import com.jhw.swing.material.components.labels._MaterialLabel;
-import com.jhw.swing.material.components.progress._MaterialProgressSpinner;
-import com.jhw.swing.material.standars.MaterialFontRoboto;
-import com.jobits.ui.components.swing.containers.MaterialPanel;
+import com.root101.swing.material.components.labels._MaterialLabel;
+import com.root101.swing.material.components.progress._MaterialProgressSpinner;
+import com.root101.swing.material.standards.MaterialFontRoboto;
 import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.JLabel;
@@ -17,7 +16,7 @@ import javax.swing.JLabel;
  *
  * @author Jorge
  */
-public class LoadingPanel extends MaterialPanel {
+public class LoadingPanel extends com.root101.swing.bundles.loading.LoadingPanel {
 
     String msg = "Cargando...";
 
