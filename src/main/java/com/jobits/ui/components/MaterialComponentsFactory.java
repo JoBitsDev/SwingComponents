@@ -244,6 +244,7 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
             picker.getMonthView().setMonthStringBackground(DefaultValues.PRIMARY_COLOR_LIGHT);
             return picker;
         }
+
         public static JXDatePicker getUnlabeledDatePicker() {
             MaterialDatePicker picker = MaterialDatePickersFactory.build();
             picker.setLabel("");
@@ -266,11 +267,20 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         public static JPanel getTransparentPanel() {
             JPanel transperentPanel = new JPanel();
             transperentPanel.setOpaque(false);
+            transperentPanel.setToolTipText(null);
             return transperentPanel;
         }
 
         public static JPanel getPrimaryPanel() {
-            return new MaterialPanel(DefaultValues.SECONDARY_COLOR_LIGHT);
+            JPanel secondaryPanel = new MaterialPanel(DefaultValues.SECONDARY_COLOR_LIGHT);
+            secondaryPanel.setToolTipText(null);
+            return secondaryPanel;
+        }
+
+        public static JPanel getSecondaryPanel() {
+            JPanel secondaryPanel = new MaterialPanel(DefaultValues.WHITE);
+            secondaryPanel.setToolTipText(null);
+            return new MaterialPanel(MaterialColors.WHITE);
         }
 
         public static JFrame getMaterialWindow() {
@@ -283,10 +293,6 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
 
         public static JFrame getMaterialDialog() {
             return new MaterialFrame();
-        }
-
-        public static JPanel getSecondaryPanel() {
-            return new MaterialPanel(MaterialColors.WHITE);
         }
 
         public static JPanel getHeaderPanel() {
