@@ -2,7 +2,7 @@
 dependencies {
     testCompile 'junit:junit:4.12'
     implementation project(':core')
-    implementation 'com.root101:utils-core:3.0.1.RELEASE.20210109'
+   // implementation 'com.root101:utils-core:3.0.1.RELEASE.20210109'
     implementation 'com.root101.swing:swing-material-standars:2.0.0.RELEASE.20210109'
     implementation 'com.root101.swing:swing-material-core:6.0.1.SNAPSHOT.20210109'
     compile(group: 'com.root101.swing', name: 'swing-material-notifications', version: '2.0.0.SNAPSHOT.20210109')
