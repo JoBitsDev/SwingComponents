@@ -228,11 +228,14 @@ public class MaterialComponentsFactory {//TODO material outlined buttons instead
         }
 
         public static JTextField getTextFielPrecioVenta(String hint, String title, String coin) {
-            MaterialFormatedTextField textField = MaterialTextFactory.buildFormatedRuntime(new MoneyFormateer());
-            textField.setHint(hint);
-            textField.setLabel(title);
-            textField.setExtra(coin);
-            return textField;
+            return new MaterialTextField(hint, title + " (" + coin + " )");
+//            TODO: Corregir error del money formatter
+            
+//            MaterialFormatedTextField textField = MaterialTextFactory.buildFormatedRuntime(new MoneyFormateer());
+//            textField.setHint(hint);
+//            textField.setLabel(title);
+//            textField.setExtra(coin);
+//            return textField;
         }
 
         public static JCheckBox getCheckBox() {
