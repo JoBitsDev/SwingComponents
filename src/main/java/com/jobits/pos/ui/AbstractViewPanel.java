@@ -5,6 +5,7 @@
  */
 package com.jobits.pos.ui;
 
+import com.jobits.ui.swing.ViewPanel;
 import com.jobits.pos.ui.presenters.AbstractViewPresenter;
 
 /**
