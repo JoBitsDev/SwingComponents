@@ -1,13 +1,20 @@
     
 dependencies {
     testCompile 'junit:junit:4.12'
-    implementation project(':core')
-   // implementation 'com.root101:utils-core:3.0.1.RELEASE.20210109'
+    // implementation 'com.root101:utils-core:3.0.1.RELEASE.20210109'
+    implementation 'com.root101.clean:com.root101.clean.core:2.1.3'
     implementation 'com.root101.swing:swing-material-standars:2.0.0.RELEASE.20210109'
     implementation 'com.root101.swing:swing-material-core:6.0.1.SNAPSHOT.20210109'
     compile(group: 'com.root101.swing', name: 'swing-material-notifications', version: '2.0.0.SNAPSHOT.20210109')
     implementation 'com.root101.swing:swing-derivable-icons:2.0.0.RELEASE.20210107'
 
+        
+    // https://mvnrepository.com/artifact/com.jgoodies/jgoodies-binding
+    compile group: 'com.jgoodies', name: 'jgoodies-binding', version: '2.13.0'
+ 
+    // https://mvnrepository.com/artifact/com.jidesoft/jide-oss
+    compile group: 'com.jidesoft', name: 'jide-oss', version: '3.6.18'
+    
     
     //SWINGX
     // https://mvnrepository.com/artifact/org.swinglabs/swingx
