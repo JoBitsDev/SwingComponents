@@ -14,7 +14,7 @@ import java.util.List;
  */
 public enum ThemeType {
 
-    DEFAULT("Default"),
+    NIMBUS("Nimbus"),
     SIMPLE_MATERIAL("Material Simple"),
     //    DARK_MATERIAL("Material Oscuro"), TODO: en progreso tema oscuro
     MATERIAL("Material");

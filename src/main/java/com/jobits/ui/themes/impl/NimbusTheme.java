@@ -7,6 +7,9 @@ package com.jobits.ui.themes.impl;
 
 import com.jgoodies.binding.value.ValueModel;
 import com.jobits.pos.ui.DefaultValues;
+import com.jobits.ui.components.swing.buttons.MaterialButton;
+import com.jobits.ui.components.swing.buttons.MaterialIconButton;
+import com.jobits.ui.components.swing.buttons.MaterialSecondaryButton;
 import com.jobits.ui.components.swing.displayers.Card;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
 import com.jobits.ui.themes.ThemeService;
@@ -17,12 +20,16 @@ import com.root101.swing.material.components.datepicker.MaterialYearPicker;
 import com.root101.swing.material.components.datepicker._Month;
 import com.root101.swing.material.components.progress.MaterialProgressSpinner;
 import com.root101.swing.material.components.progress._MaterialProgressSpinner;
+import com.root101.swing.material.standards.MaterialIcons;
 import com.root101.swing.ui.MaterialLookAndFeel;
 import com.root101.swing.ui.componentsui.list.MaterialListUI;
+import com.root101.swing.ui.componentsui.panel.MaterialPanelUI;
 import com.root101.swing.ui.componentsui.tabbedpane.MaterialTabbedPaneUI;
+import com.root101.swing.util.Utils;
 import java.time.LocalDate;
 import java.time.Year;
 import javax.swing.Action;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -40,6 +47,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.LookAndFeel;
 import javax.swing.plaf.TabbedPaneUI;
+import javax.swing.plaf.basic.BasicPanelUI;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.plaf.multi.MultiLookAndFeel;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import org.jdesktop.swingx.JXDatePicker;
 import org.jdesktop.swingx.JXList;
 
@@ -47,75 +59,103 @@ import org.jdesktop.swingx.JXList;
  *
  * @author Home
  */
-public class DefaultTheme extends AbstractTheme implements ThemeService {
+public class NimbusTheme extends AbstractTheme implements ThemeService {
 
-    public DefaultTheme() {
-        super(ThemeType.DEFAULT.getThemeName());
+    public NimbusTheme() {
+        super(ThemeType.NIMBUS.getThemeName());
     }
 
-    @Override
     public JButton getMaterialButton() {
-        return new JButton();
+        JButton button = new JButton();
+        button.setBackground(DefaultValues.PRIMARY_COLOR_DARK);
+        button.setForeground(Utils.getForegroundAccording(button.getBackground()));
+        return button;
     }
 
-    @Override
     public JButton getOutlinedButton() {
-        return new JButton();
+        JButton button = new JButton();
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getLinedButton() {
-        return new JButton();
+        JButton button = new JButton();
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        button.setBorderPainted(true);
+        button.setBorder(BorderFactory.createLineBorder(DefaultValues.PRIMARY_COLOR_DARK, 2, true));
+        return button;
     }
 
-    @Override
     public JButton getCloseButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.CLOSE);
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getMaximizeButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.EXPAND_MORE);
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getMinimizeButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.EXPAND_LESS);
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getBackButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.ARROW_BACK);
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getEditButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.UPDATE);
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getAcceptButton() {
-        return new JButton();
+        JButton button = new JButton();
+        button.setBackground(DefaultValues.PRIMARY_COLOR_DARK);
+        button.setForeground(Utils.getForegroundAccording(button.getBackground()));
+        return button;
     }
 
-    @Override
     public JButton getCancelButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.REMOVE.deriveIcon(30f));
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getIconButton(ImageIcon imageIcon) {
-        return new JButton(imageIcon);
+        JButton button = new JButton(imageIcon);
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getMenuButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.MENU.deriveIcon(30f));
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
-    @Override
     public JButton getAddButton() {
-        return new JButton();
+        JButton button = new JButton(MaterialIcons.ADD.deriveIcon(30f));
+        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
+        return button;
     }
 
     @Override
@@ -149,7 +189,8 @@ public class DefaultTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public JComponent getLoadingPanel(String loadingMessage) {
-        return new LoadingPanel(loadingMessage);
+        LoadingPanel loading = new LoadingPanel(loadingMessage);
+        return loading;
     }
 
     @Override
@@ -247,7 +288,7 @@ public class DefaultTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public <T> JComboBox<T> getComboBoxEditable() {
-        return new JComboBox();
+        return new JComboBox<>();
     }
 
     @Override
@@ -319,12 +360,12 @@ public class DefaultTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public TabbedPaneUI getTabbedPaneUI() {
-        return new MaterialTabbedPaneUI();
+        return new BasicTabbedPaneUI();
     }
 
     @Override
     public LookAndFeel getLooks() {
-        return new MaterialLookAndFeel();
+        return new NimbusLookAndFeel();
     }
 
 }
