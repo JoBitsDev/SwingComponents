@@ -12,6 +12,8 @@ import com.jobits.ui.components.swing.buttons.MaterialIconButton;
 import com.jobits.ui.components.swing.buttons.MaterialSecondaryButton;
 import com.jobits.ui.components.swing.displayers.Card;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
+import com.jobits.ui.components.swing.input.MaterialPasswordField;
+import com.jobits.ui.components.swing.input.MaterialTextField;
 import com.jobits.ui.themes.ThemeService;
 import com.jobits.ui.themes.ThemeType;
 import com.root101.swing.material.components.datepicker.MaterialDatePickersFactory;
@@ -200,8 +202,9 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public JList getList() {
-        return new JXList();
-
+        JXList list = new JXList();
+        list.setBorder(BorderFactory.createLineBorder(DefaultValues.PRIMARY_COLOR_DARK, 1, true));
+        return list;
     }
 
     @Override
@@ -253,7 +256,7 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public JTextField getTextField(String hintName, String header) {
-        return new JTextField();
+        return new MaterialTextField(hintName, header);
     }
 
     @Override
@@ -263,12 +266,19 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public JPasswordField getPasswordField(String hint, String title) {
-        return new JPasswordField();
+        return new MaterialPasswordField(hint, title);
     }
 
     @Override
     public JTextField getTextFielPrecioVenta(String hint, String title, String coin) {
-        return new JTextField();
+        return new MaterialTextField(hint, title + " (" + coin + " )");
+//            TODO: Corregir error del money formatter
+
+//            MaterialFormatedTextField textField = MaterialTextFactory.buildFormatedRuntime(new MoneyFormateer());
+//            textField.setHint(hint);
+//            textField.setLabel(title);
+//            textField.setExtra(coin);
+//            return textField;
     }
 
     @Override
