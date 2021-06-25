@@ -7,7 +7,6 @@ package com.jobits.ui.components.swing.menus;
 
 import java.util.List;
 import javax.swing.Action;
-import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 /**
@@ -16,12 +15,18 @@ import javax.swing.JPopupMenu;
  */
 public class PopUpMenu extends JPopupMenu {
 
-    JMenuItem anItem;
-
     public PopUpMenu(List<Action> menuActionsList) {
         menuActionsList.forEach(action -> {
             add(action);
         });
+    }
+
+    public PopUpMenu(Action... menuActions) {
+        if (menuActions != null) {
+            for (Action action : menuActions) {
+                add(action);
+            }
+        }
     }
 
 }

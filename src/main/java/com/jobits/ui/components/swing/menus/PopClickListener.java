@@ -7,9 +7,6 @@ package com.jobits.ui.components.swing.menus;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.swing.Action;
 
 /**
@@ -18,12 +15,10 @@ import javax.swing.Action;
  */
 public class PopClickListener extends MouseAdapter {
 
-    List<Action> menuActionsList = new ArrayList<>();
+    PopUpMenu menu = new PopUpMenu();
 
     public PopClickListener(Action... menuActions) {
-        if (menuActions != null) {
-            menuActionsList.addAll(Arrays.asList(menuActions));
-        }
+        menu = new PopUpMenu(menuActions);
     }
 
     @Override
@@ -41,7 +36,6 @@ public class PopClickListener extends MouseAdapter {
     }
 
     private void doPop(MouseEvent e) {
-        PopUpMenu menu = new PopUpMenu(menuActionsList);
         menu.show(e.getComponent(), e.getX(), e.getY());
     }
 }
