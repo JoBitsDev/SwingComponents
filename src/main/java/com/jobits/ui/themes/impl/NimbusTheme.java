@@ -48,9 +48,11 @@ import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.LookAndFeel;
+import javax.swing.UIManager;
 import javax.swing.plaf.TabbedPaneUI;
 import javax.swing.plaf.basic.BasicPanelUI;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.multi.MultiLookAndFeel;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.plaf.synth.SynthLookAndFeel;
@@ -76,14 +78,14 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     public JButton getOutlinedButton() {
         JButton button = new JButton();
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getLinedButton() {
         JButton button = new JButton();
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         button.setBorderPainted(true);
         button.setBorder(BorderFactory.createLineBorder(DefaultValues.PRIMARY_COLOR_DARK, 2, true));
@@ -92,35 +94,35 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     public JButton getCloseButton() {
         JButton button = new JButton(MaterialIcons.CLOSE);
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getMaximizeButton() {
         JButton button = new JButton(MaterialIcons.EXPAND_MORE);
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getMinimizeButton() {
         JButton button = new JButton(MaterialIcons.EXPAND_LESS);
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getBackButton() {
         JButton button = new JButton(MaterialIcons.ARROW_BACK);
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getEditButton() {
         JButton button = new JButton(MaterialIcons.UPDATE);
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
@@ -134,28 +136,28 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     public JButton getCancelButton() {
         JButton button = new JButton(MaterialIcons.REMOVE.deriveIcon(30f));
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getIconButton(ImageIcon imageIcon) {
         JButton button = new JButton(imageIcon);
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getMenuButton() {
         JButton button = new JButton(MaterialIcons.MENU.deriveIcon(30f));
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
 
     public JButton getAddButton() {
         JButton button = new JButton(MaterialIcons.ADD.deriveIcon(30f));
-        button.setBackground(DefaultValues.TRANSPARENT);
+        button.setOpaque(false);
         button.setForeground(DefaultValues.PRIMARY_COLOR_DARK);
         return button;
     }
@@ -375,7 +377,7 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
 
     @Override
     public LookAndFeel getLooks() {
-        return new NimbusLookAndFeel();
+        return new MetalLookAndFeel();
     }
 
 }
