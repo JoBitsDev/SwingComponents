@@ -7,9 +7,6 @@ package com.jobits.ui.themes.impl;
 
 import com.jgoodies.binding.value.ValueModel;
 import com.jobits.pos.ui.DefaultValues;
-import com.jobits.ui.components.swing.buttons.MaterialButton;
-import com.jobits.ui.components.swing.buttons.MaterialIconButton;
-import com.jobits.ui.components.swing.buttons.MaterialSecondaryButton;
 import com.jobits.ui.components.swing.displayers.Card;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
 import com.jobits.ui.components.swing.input.MaterialPasswordField;
@@ -23,10 +20,7 @@ import com.root101.swing.material.components.datepicker._Month;
 import com.root101.swing.material.components.progress.MaterialProgressSpinner;
 import com.root101.swing.material.components.progress._MaterialProgressSpinner;
 import com.root101.swing.material.standards.MaterialIcons;
-import com.root101.swing.ui.MaterialLookAndFeel;
 import com.root101.swing.ui.componentsui.list.MaterialListUI;
-import com.root101.swing.ui.componentsui.panel.MaterialPanelUI;
-import com.root101.swing.ui.componentsui.tabbedpane.MaterialTabbedPaneUI;
 import com.root101.swing.util.Utils;
 import java.time.LocalDate;
 import java.time.Year;
@@ -48,14 +42,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
 import javax.swing.plaf.TabbedPaneUI;
-import javax.swing.plaf.basic.BasicPanelUI;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.plaf.metal.MetalLookAndFeel;
-import javax.swing.plaf.multi.MultiLookAndFeel;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import javax.swing.plaf.synth.SynthLookAndFeel;
 import org.jdesktop.swingx.JXDatePicker;
 import org.jdesktop.swingx.JXList;
 
@@ -327,7 +316,7 @@ public class NimbusTheme extends AbstractTheme implements ThemeService {
     @Override
     public JPanel getSecondaryPanel() {
         JPanel panel = new JPanel();
-        panel.setBackground(DefaultValues.WHITE);
+        panel.setBackground(DefaultValues.PRIMARY_COLOR_LIGHT);
         panel.setToolTipText(null);
         return panel;
     }

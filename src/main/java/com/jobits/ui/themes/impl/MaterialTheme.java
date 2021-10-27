@@ -268,9 +268,9 @@ public class MaterialTheme extends AbstractTheme implements ThemeService {
     }
 
     public JPanel getSecondaryPanel() {
-        JPanel secondaryPanel = new MaterialPanel(DefaultValues.WHITE);
+        JPanel secondaryPanel = new MaterialPanel(DefaultValues.PRIMARY_COLOR_LIGHT);
         secondaryPanel.setToolTipText(null);
-        return new MaterialPanel(MaterialColors.WHITE);
+        return new MaterialPanel(DefaultValues.PRIMARY_COLOR_LIGHT);
     }
 
     public JFrame getMaterialWindow() {
