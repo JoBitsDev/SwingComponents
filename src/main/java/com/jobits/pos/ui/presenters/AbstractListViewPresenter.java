@@ -16,7 +16,8 @@ import java.util.Optional;
  * @param <T>
  *
  */
-public abstract class AbstractListViewPresenter<T extends AbstractListViewModel> extends AbstractViewPresenter<T> {
+public abstract class AbstractListViewPresenter<T extends AbstractListViewModel>
+        extends AbstractViewPresenter<T> {
 
     public static final String ACTION_AGREGAR = "Agregar";
     public static final String ACTION_EDITAR = "Editar";
@@ -56,6 +57,12 @@ public abstract class AbstractListViewPresenter<T extends AbstractListViewModel>
                 return Optional.empty();
             }
         });
+    }
+
+    @Override
+    protected Optional refreshState() {
+        setListToBean();
+        return super.refreshState();
     }
 
     protected abstract void setListToBean();
