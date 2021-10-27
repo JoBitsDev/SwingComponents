@@ -10,9 +10,6 @@ import com.jobits.pos.ui.DefaultValues;
 import com.jobits.ui.components.swing.buttons.MaterialButton;
 import com.jobits.ui.components.swing.buttons.MaterialIconButton;
 import com.jobits.ui.components.swing.buttons.MaterialSecondaryButton;
-import com.jobits.ui.components.swing.containers.MaterialFrame;
-import com.jobits.ui.components.swing.containers.MaterialPanel;
-import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.Card;
 import com.jobits.ui.components.swing.displayers.LoadingPanel;
 import com.jobits.ui.components.swing.input.MaterialPasswordField;
@@ -28,10 +25,7 @@ import com.root101.swing.material.components.datepicker.MaterialYearPicker;
 import com.root101.swing.material.components.datepicker._Month;
 import com.root101.swing.material.components.progress.MaterialProgressSpinner;
 import com.root101.swing.material.components.progress._MaterialProgressSpinner;
-import com.root101.swing.material.components.scrollpane.MaterialScrollPane;
-import com.root101.swing.material.components.scrollpane._MaterialScrollPaneCore;
 import com.root101.swing.material.components.spinner._MaterialSpinnerInteger;
-import com.root101.swing.material.standards.MaterialColors;
 import com.root101.swing.material.standards.MaterialIcons;
 import com.root101.swing.ui.MaterialLookAndFeel;
 import com.root101.swing.ui.componentsui.list.MaterialListUI;
@@ -273,7 +267,7 @@ public class SimpleMaterialTheme extends AbstractTheme implements ThemeService {
     @Override
     public JPanel getSecondaryPanel() {
         JPanel panel = new JPanel();
-        panel.setBackground(DefaultValues.WHITE);
+        panel.setBackground(DefaultValues.PRIMARY_COLOR_LIGHT);
         panel.setToolTipText(null);
         return panel;
     }
