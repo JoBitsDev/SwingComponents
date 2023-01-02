@@ -5,8 +5,8 @@
  */
 package com.jobits.pos.ui.swing.utils;
 
-import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import javax.swing.JTable;
+import javax.swing.ListModel;
 import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
@@ -36,6 +36,11 @@ public abstract class BindableTableModel<T> extends AbstractTableAdapter<T> {
         super();
     }
 
+    public void setColumnTotal(int columnTotal) {
+        this.columnTotal = columnTotal;
+        totalRowShowing = columnTotal != -1;
+    }
+
     private void initFilterAndSorter() {
         sorter = new TableRowSorter<>(this);
         filter = new RestManagerTableRowFilter();
@@ -54,8 +59,11 @@ public abstract class BindableTableModel<T> extends AbstractTableAdapter<T> {
     @Override
     public abstract String getColumnName(int column);
 
-    
-    
+    @Override
+    public int getRowCount() {
+        return totalRowShowing ? super.getRowCount() + 1 : super.getRowCount();
+    }
+
     /**
      * Shows the rows that contains the string passed by parameter this method
      * is case sensitive
@@ -92,10 +100,10 @@ public abstract class BindableTableModel<T> extends AbstractTableAdapter<T> {
         return getRow(table.convertRowIndexToModel(table.getSelectedRow()));
     }
 
-    public int getItemsSize(){
-        return getListModel().getSize();
+    public int getItemsSize() {
+        return totalRowShowing ? getListModel().getSize() : getListModel().getSize() + 1;
     }
-    
+
     public RestManagerTableRowFilter getFilter() {
         return filter;
     }

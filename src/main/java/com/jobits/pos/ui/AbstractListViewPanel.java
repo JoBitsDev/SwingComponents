@@ -5,24 +5,41 @@ import com.jgoodies.binding.list.SelectionInList;
 import com.jobits.pos.ui.presenters.AbstractListViewPresenter;
 import com.jobits.pos.ui.swing.utils.BindableTableModel;
 import com.jobits.ui.components.MaterialComponentsFactory;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JPanel;
-import org.jdesktop.swingx.JXPanel;
-import static com.jobits.pos.ui.viewmodel.AbstractListViewModel.*;
 import com.root101.swing.material.standards.MaterialIcons;
+
+import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import static com.jobits.pos.ui.viewmodel.AbstractListViewModel.*;
 
 /**
- *
- * @author Jorge
  * @param <T> tipo de dato del modelo
+ * @author Jorge
  */
 public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
 
     protected BindableTableModel<T> model;
-
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    protected javax.swing.JButton jButtonAdd;
+    protected javax.swing.JButton jButtonDelete;
+    protected javax.swing.JButton jButtonEdit;
+    protected javax.swing.JLabel jLabel1;
+    protected javax.swing.JLabel jLabel2;
+    protected javax.swing.JLabel jLabelCantidad;
+    protected javax.swing.JPanel jPanel1;
+    protected javax.swing.JPanel jPanel2;
+    protected javax.swing.JPanel jPanelControles;
+    protected javax.swing.JPanel jPanelControlesSuperiores;
+    protected javax.swing.JPanel jPanelExtra;
+    protected javax.swing.JPanel jPanelHeader;
+    protected javax.swing.JPanel jPanelTabla;
+    protected javax.swing.JPopupMenu jPopupMenuClickDerecho;
+    protected javax.swing.JScrollPane jScrollPane1;
+    protected javax.swing.JTable jTableList;
+    protected javax.swing.JTextField jTextFieldBusqueda;
     public AbstractListViewPanel(AbstractListViewPresenter presenter) {
         super(presenter);
         addComponentListener(new ComponentAdapter() {
@@ -88,6 +105,7 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldBusquedaKeyTyped(evt);
             }
+
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldBusquedaKeyReleased(evt);
             }
@@ -150,12 +168,12 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
         jTableList.setBackground(getBackground());
         jTableList.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
+                },
+                new String[]{
 
-            }
+                }
         ));
         jTableList.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         jTableList.setRowHeight(25);
@@ -165,9 +183,11 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTableListMousePressed(evt);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jTableListMouseReleased(evt);
             }
+
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableListMouseClicked(evt);
             }
@@ -217,25 +237,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
 
     private void jTableListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseReleased
     }//GEN-LAST:event_jTableListMouseReleased
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JButton jButtonAdd;
-    protected javax.swing.JButton jButtonDelete;
-    protected javax.swing.JButton jButtonEdit;
-    protected javax.swing.JLabel jLabel1;
-    protected javax.swing.JLabel jLabel2;
-    protected javax.swing.JLabel jLabelCantidad;
-    protected javax.swing.JPanel jPanel1;
-    protected javax.swing.JPanel jPanel2;
-    protected javax.swing.JPanel jPanelControles;
-    protected javax.swing.JPanel jPanelControlesSuperiores;
-    protected javax.swing.JPanel jPanelExtra;
-    protected javax.swing.JPanel jPanelHeader;
-    protected javax.swing.JPanel jPanelTabla;
-    protected javax.swing.JPopupMenu jPopupMenuClickDerecho;
-    protected javax.swing.JScrollPane jScrollPane1;
-    protected javax.swing.JTable jTableList;
-    protected javax.swing.JTextField jTextFieldBusqueda;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -252,7 +253,6 @@ public abstract class AbstractListViewPanel<T> extends AbstractViewPanel {
             }
 
         });
-
         jTableList.setRowSorter(model.getSorter());
         Bindings.bind(jTableList,
                 new SelectionInList(getPresenter().getModel(PROP_LISTA_ELEMENTOS),

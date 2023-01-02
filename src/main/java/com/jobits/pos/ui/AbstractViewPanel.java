@@ -5,11 +5,10 @@
  */
 package com.jobits.pos.ui;
 
-import com.jobits.ui.swing.ViewPanel;
 import com.jobits.pos.ui.presenters.AbstractViewPresenter;
+import com.jobits.ui.swing.ViewPanel;
 
 /**
- *
  * @author Jorge
  */
 public abstract class AbstractViewPanel extends ViewPanel {
@@ -22,7 +21,7 @@ public abstract class AbstractViewPanel extends ViewPanel {
     }
 
     public AbstractViewPanel(AbstractViewPresenter presenter) {
-        initComponents();
+        initComponents();//esta linea va primero porque hay que inicializar los componentes con sus listener para que des
         this.presenter = presenter;
         uiInit();
         wireUp();
@@ -42,12 +41,12 @@ public abstract class AbstractViewPanel extends ViewPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 613, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 496, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

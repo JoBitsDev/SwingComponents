@@ -6,36 +6,11 @@
 package com.jobits.ui.themes;
 
 import com.jgoodies.binding.value.ValueModel;
-import com.jobits.pos.ui.DefaultValues;
-import com.jobits.ui.components.swing.buttons.MaterialButton;
-import com.jobits.ui.components.swing.buttons.MaterialIconButton;
-import com.jobits.ui.components.swing.buttons.MaterialSecondaryButton;
-import com.jobits.ui.components.swing.containers.MaterialFrame;
-import com.jobits.ui.components.swing.containers.MaterialPanel;
-import com.jobits.ui.components.swing.containers.MaterialWindow;
 import com.jobits.ui.components.swing.displayers.Card;
-import com.jobits.ui.components.swing.displayers.LoadingPanel;
-import com.jobits.ui.components.swing.input.MaterialPasswordField;
-import com.jobits.ui.components.swing.input.MaterialTextField;
-import com.root101.swing.material.components.combobox.MaterialComboBox;
-import com.root101.swing.material.components.combobox.MaterialComboBoxFactory;
-import com.root101.swing.material.components.datepicker.MaterialDatePicker;
-import com.root101.swing.material.components.datepicker.MaterialDatePickersFactory;
 import com.root101.swing.material.components.datepicker.MaterialMonthPicker;
 import com.root101.swing.material.components.datepicker.MaterialYearPicker;
-import com.root101.swing.material.components.datepicker._Month;
 import com.root101.swing.material.components.progress.MaterialProgressSpinner;
-import com.root101.swing.material.components.progress._MaterialProgressSpinner;
-import com.root101.swing.material.components.scrollpane.MaterialScrollPane;
-import com.root101.swing.material.components.scrollpane._MaterialScrollPaneCore;
-import com.root101.swing.material.components.spinner._MaterialSpinnerInteger;
-import com.root101.swing.material.standards.MaterialColors;
-import com.root101.swing.material.standards.MaterialIcons;
-import com.root101.swing.ui.MaterialLookAndFeel;
 import com.root101.swing.ui.componentsui.list.MaterialListUI;
-import com.root101.swing.ui.componentsui.tabbedpane.MaterialTabbedPaneUI;
-import java.time.LocalDate;
-import java.time.Year;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -53,10 +28,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.LookAndFeel;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.TabbedPaneUI;
 import org.jdesktop.swingx.JXDatePicker;
-import org.jdesktop.swingx.JXList;
 
 /**
  *

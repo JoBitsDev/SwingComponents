@@ -208,6 +208,7 @@ public class AbstractListViewModel<T> extends AbstractViewModel {
         ArrayListModel<T> oldLista_elementos = this.lista_elementos;
         this.lista_elementos.clear();
         this.lista_elementos.addAll(lista_elementos);
+        setCatidad_elementos(lista_elementos.size() + " Elemento(s)");
         firePropertyChange(PROP_LISTA_ELEMENTOS, oldLista_elementos, lista_elementos, false);
     }
 
